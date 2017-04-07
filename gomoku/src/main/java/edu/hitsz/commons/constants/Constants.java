@@ -5,6 +5,14 @@ import java.nio.charset.Charset;
 import java.util.regex.Pattern;
 
 public interface Constants {
+	/************************* 	界面相关	*************************/
+	int FONT_SIZE = 18;
+	int BOARD_WIDTH = 500;
+	int BOARD_HIGHT = 550;
+	int JLABLE_PLAYER_WIDTH = 150;
+	int JLABLE_PLAYER_HEIGHT = 25;
+	int TEXTFIELD_NAME_WIDTH = 100;
+	int TEXTFIELD_NAME_HEIGHT = 25;
 	
 	/********************   			 系统相关  				  ********************/
 	int AVAILABLE_PROCESSOR = Runtime.getRuntime().availableProcessors();

@@ -16,7 +16,7 @@ public class Board extends JFrame {
     private TextField leftName = null;
     private JLabel rightPlayer = null;
     private TextField rightName = null;
-    private TextArea win = null;
+    private TextArea winTextArea = null;
 
     public Board() throws HeadlessException {
         this.boardPanel = new JPanel();
@@ -24,7 +24,7 @@ public class Board extends JFrame {
         this.leftName = new TextField();
         this.rightPlayer = new JLabel();
         this.rightName = new TextField();
-        this.win = new TextArea();
+        this.winTextArea = new TextArea();
         init();
     }
 
@@ -56,7 +56,10 @@ public class Board extends JFrame {
         rightName.setEditable(false);
 
         /************************* 	Second Line	*************************/
-
+        winTextArea.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+        winTextArea.setBounds(0, Constants.JLABLE_PLAYER_HEIGHT,
+                              Constants.BOARD_WIDTH, Constants.JLABLE_PLAYER_HEIGHT);
+//        winTextArea
 
         /************************* 	Panel	*************************/
         boardPanel.setSize(Constants.BOARD_WIDTH, Constants.BOARD_HIGHT);

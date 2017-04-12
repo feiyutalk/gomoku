@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import java.util.regex.Pattern;
 
 public interface Constants {
+
 	/************************* 	界面相关	*************************/
 	int FONT_SIZE = 18;
 	int BOARD_WIDTH = 500;

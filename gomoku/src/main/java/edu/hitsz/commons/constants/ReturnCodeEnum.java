@@ -35,7 +35,7 @@ public enum ReturnCodeEnum {
 	 */
 	RMIRETURNCODE_IOEXCEPTION(404),
 
-	/*=================Worker 与 Server 通讯返回枚举类型===================*/
+	/*=================Worker 与 server 通讯返回枚举类型===================*/
 	/**
 	 * Worker数量超出限制
 	 */

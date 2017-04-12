@@ -26,7 +26,7 @@ public abstract class AbstractRemotingServer extends AbstractRemoting implements
     /*共用的线程池 用于 1.处理器（当用户传入的线程池为空）2. 回调函数执行*/
     private final ExecutorService publicExecutor;
     /*该定时器用于扫描responseTable 清除过时的响应*/
-    private final Timer timer = new Timer("Server", true);
+    private final Timer timer = new Timer("server", true);
     /**
      * 构造函数
      * @param remotingServerConfig

@@ -1,0 +1,72 @@
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 00:26:57  
+channel注册成功:127.0.0.1:50234
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 00:27:02  
+channel注册成功:127.0.0.1:50236
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:27:11  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:56)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:48)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:27:11  
+edu.hitsz.remoting.command.RemotingCommand@5ee92076
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:27:14  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:56)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:48)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:27:14  
+edu.hitsz.remoting.command.RemotingCommand@644a6ae8
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:27:15  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:56)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:48)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:27:15  
+edu.hitsz.remoting.command.RemotingCommand@15b20f7a
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:27:15  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:56)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:48)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:27:15  
+edu.hitsz.remoting.command.RemotingCommand@35101041
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 00:27:19  
+客户端断开链接: 127.0.0.1:50236
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 00:27:19  
+channel取消注册成功:127.0.0.1:50236
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 00:27:20  
+客户端断开链接: 127.0.0.1:50234
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 00:27:20  
+channel取消注册成功:127.0.0.1:50234

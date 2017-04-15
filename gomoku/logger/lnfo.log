@@ -1,0 +1,353 @@
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 00:27:02  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 00:27:02  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@1ba40833
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 00:40:54  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 00:40:54  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@594eba2e
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 00:40:54  
+channel注册成功:127.0.0.1:50396
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 00:40:55  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 00:40:55  
+channel注册成功:127.0.0.1:50402
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 00:40:55  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@4fbd7fd7
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 00:43:06  
+客户端断开链接: 127.0.0.1:50396
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 00:43:06  
+channel取消注册成功:127.0.0.1:50396
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 00:43:07  
+客户端断开链接: 127.0.0.1:50402
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 00:43:07  
+channel取消注册成功:127.0.0.1:50402
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 00:48:11  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 00:48:11  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@8f45a93
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 00:48:11  
+channel注册成功:127.0.0.1:50534
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 00:48:12  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 00:48:12  
+channel注册成功:127.0.0.1:50536
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 00:48:12  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@855b6f1
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 00:55:56  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 00:55:56  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@5677bbd5
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 00:55:56  
+channel注册成功:127.0.0.1:50658
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 00:55:56  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 00:55:56  
+channel注册成功:127.0.0.1:50660
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 00:55:56  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@13b9a351
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:56:03  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:57)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:50)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:56:03  
+edu.hitsz.remoting.command.RemotingCommand@73658ed7
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 00:57:20  
+客户端断开链接: 127.0.0.1:50660
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 00:57:20  
+channel取消注册成功:127.0.0.1:50660
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:04:11  
+客户端断开链接: 127.0.0.1:50658
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:04:11  
+channel取消注册成功:127.0.0.1:50658
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:04:27  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:04:27  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@453c560c
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:04:27  
+channel注册成功:127.0.0.1:50814
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:04:28  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:04:28  
+channel注册成功:127.0.0.1:50818
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:04:28  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@111a9929
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 01:04:37  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:57)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:50)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 01:04:37  
+edu.hitsz.remoting.command.RemotingCommand@5ee92076
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:06:15  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:06:15  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@101b9907
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:06:15  
+channel注册成功:127.0.0.1:50860
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:06:16  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:06:16  
+channel注册成功:127.0.0.1:50862
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:06:16  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@2950694f
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:06:46  
+客户端断开链接: 127.0.0.1:50860
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:06:46  
+channel取消注册成功:127.0.0.1:50860
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:06:47  
+客户端断开链接: 127.0.0.1:50862
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:06:47  
+channel取消注册成功:127.0.0.1:50862
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:07:16  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:07:16  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@2490804f
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:07:16  
+channel注册成功:127.0.0.1:50878
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:07:21  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:07:21  
+channel注册成功:127.0.0.1:50882
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:07:21  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@650a1180
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:08:39  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:08:39  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@ab765cd
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:08:39  
+channel注册成功:127.0.0.1:50918
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:08:40  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:08:40  
+channel注册成功:127.0.0.1:50920
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:08:40  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@1ca0a554
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:15:22  
+客户端断开链接: 127.0.0.1:50918
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:15:22  
+channel取消注册成功:127.0.0.1:50918
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:15:23  
+客户端断开链接: 127.0.0.1:50920
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:15:23  
+channel取消注册成功:127.0.0.1:50920
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:15:43  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:15:43  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@32c8869e
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:15:43  
+channel注册成功:127.0.0.1:51058
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:15:45  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:15:45  
+channel注册成功:127.0.0.1:51060
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:15:45  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@1ca0a554
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:17:08  
+客户端断开链接: 127.0.0.1:51058
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:17:08  
+channel取消注册成功:127.0.0.1:51058
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:18:40  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:18:40  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@6ba8ac8e
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:18:40  
+channel注册成功:127.0.0.1:51144
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:18:46  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:18:46  
+channel注册成功:127.0.0.1:51148
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:18:46  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@e9bc455
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:22:22  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:22:22  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@a63f879
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:22:22  
+channel注册成功:127.0.0.1:51208
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:22:23  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:22:23  
+channel注册成功:127.0.0.1:51214
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:22:23  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@6ba8ac8e
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 01:23:09  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:57)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:51)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 01:23:09  
+edu.hitsz.remoting.command.RemotingCommand@2fa5ccf5
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:23:18  
+客户端断开链接: 127.0.0.1:51214
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:23:18  
+channel取消注册成功:127.0.0.1:51214
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:23:20  
+客户端断开链接: 127.0.0.1:51208
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:23:20  
+channel取消注册成功:127.0.0.1:51208
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:26:37  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:26:37  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@14aac9d8
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:26:37  
+channel注册成功:127.0.0.1:51342
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:26:38  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:26:38  
+channel注册成功:127.0.0.1:51344
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:26:38  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@101b9907
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:26:59  
+客户端断开链接: 127.0.0.1:51342
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:26:59  
+channel取消注册成功:127.0.0.1:51342
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:27:00  
+客户端断开链接: 127.0.0.1:51344
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:27:00  
+channel取消注册成功:127.0.0.1:51344
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:33:33  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:33:33  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@6253121c
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:33:33  
+channel注册成功:127.0.0.1:51448
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:33:34  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:33:34  
+channel注册成功:127.0.0.1:51450
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:33:34  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@4d60951
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:34:12  
+客户端断开链接: 127.0.0.1:51448
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:34:12  
+channel取消注册成功:127.0.0.1:51448
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:36:05  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:36:05  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@3dc79e91
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:36:05  
+channel注册成功:127.0.0.1:51580
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:36:06  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:36:06  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@5d43145f
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:36:06  
+channel注册成功:127.0.0.1:51582
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:36:19  
+客户端断开链接: 127.0.0.1:51582
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:36:19  
+channel取消注册成功:127.0.0.1:51582
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:36:35  
+客户端断开链接: 127.0.0.1:51580
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:36:35  
+channel取消注册成功:127.0.0.1:51580
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:41:25  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:41:25  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@4716ff74
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:41:25  
+channel注册成功:127.0.0.1:51732
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:41:26  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:41:26  
+channel注册成功:127.0.0.1:51734
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:41:26  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@673678fe
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:41:56  
+客户端断开链接: 127.0.0.1:51734
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:41:56  
+channel取消注册成功:127.0.0.1:51734
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:42:37  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:42:37  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@2942b253
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:42:37  
+channel注册成功:127.0.0.1:51752
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:42:44  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:42:44  
+channel注册成功:127.0.0.1:51756
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:42:44  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@17cec6c0
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:43:06  
+客户端断开链接: 127.0.0.1:51752
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:43:06  
+channel取消注册成功:127.0.0.1:51752
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:43:07  
+客户端断开链接: 127.0.0.1:51756
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:43:07  
+channel取消注册成功:127.0.0.1:51756
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:51:47  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:51:47  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@7da763d0
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:51:47  
+channel注册成功:127.0.0.1:51916
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:51:48  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:51:48  
+channel注册成功:127.0.0.1:51918
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:51:48  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@5ec836be
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:54:49  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:54:49  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@5ec836be
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:54:49  
+channel注册成功:127.0.0.1:51976
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 01:54:50  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 01:54:50  
+channel注册成功:127.0.0.1:51978
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 01:54:50  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@4716ff74
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 01:57:22  
+客户端断开链接: 127.0.0.1:51978
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 01:57:22  
+channel取消注册成功:127.0.0.1:51978
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 02:01:20  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 02:01:20  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@2f85e0e5
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 02:01:20  
+channel注册成功:127.0.0.1:52078
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 02:01:21  
+开始尝试建立通信连接:localhost:8080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelRegistered(NettyRemotingServer.java:116) ] - 2017-04-16 02:01:21  
+channel注册成功:127.0.0.1:52080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 02:01:21  
+建立远程连接成功:localhost:8080,edu.hitsz.remoting.netty.NettyChannelFuture@34ab0951
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 02:02:12  
+客户端断开链接: 127.0.0.1:52080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 02:02:12  
+channel取消注册成功:127.0.0.1:52080
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelInactive(NettyRemotingServer.java:139) ] - 2017-04-16 02:02:15  
+客户端断开链接: 127.0.0.1:52078
+[ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-16 02:02:15  
+channel取消注册成功:127.0.0.1:52078

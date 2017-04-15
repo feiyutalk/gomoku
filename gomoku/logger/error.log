@@ -1,0 +1,105 @@
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:27:11  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:56)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:48)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:27:11  
+edu.hitsz.remoting.command.RemotingCommand@5ee92076
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:27:14  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:56)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:48)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:27:14  
+edu.hitsz.remoting.command.RemotingCommand@644a6ae8
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:27:15  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:56)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:48)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:27:15  
+edu.hitsz.remoting.command.RemotingCommand@15b20f7a
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:27:15  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:56)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:48)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:27:15  
+edu.hitsz.remoting.command.RemotingCommand@35101041
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 00:56:03  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:57)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:50)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 00:56:03  
+edu.hitsz.remoting.command.RemotingCommand@73658ed7
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 01:04:37  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:57)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:50)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 01:04:37  
+edu.hitsz.remoting.command.RemotingCommand@5ee92076
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:176) ] - 2017-04-16 01:23:09  
+处理请求出现异常
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at edu.hitsz.cluster.server.Board.isWin(Board.java:57)
+	at edu.hitsz.cluster.server.manager.UserInfo.isWin(UserInfo.java:28)
+	at edu.hitsz.cluster.server.processor.ChangeBoardProcessor.processRequest(ChangeBoardProcessor.java:51)
+	at edu.hitsz.cluster.server.processor.ServerRemotingDispacher.processRequest(ServerRemotingDispacher.java:37)
+	at edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[ ERROR ] - [ edu.hitsz.remoting.AbstractRemoting$1.run(AbstractRemoting.java:177) ] - 2017-04-16 01:23:09  
+edu.hitsz.remoting.command.RemotingCommand@2fa5ccf5

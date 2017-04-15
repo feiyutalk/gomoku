@@ -5,7 +5,12 @@ public final class RemotingProtos {
     }
 
     public enum RequestCode {
-        CONNECT(0);
+        CONNECT(0),
+        MATCH(1),
+        CHANGE_BOARD(2),
+        OPPONENT_CHANGE_BOARD(3),
+        WIN(4),
+        LOSE(5);
         private int code;
 
         private RequestCode(int code) {
@@ -27,7 +32,16 @@ public final class RemotingProtos {
     }
 
 	public enum ResponseCode {
-		CONNECT_SUCCESS(0);
+		CONNECT_SUCCESS(0),
+        MATCH_SUCCESS(1),
+        CHANGE_BOARD_SUCCESS(2),
+        CHANGE_BOARD_FAILURE(3),
+        CHANGE_OPPONENT_BOARD_SUCCESS(4),
+        CHANGE_OPPONENT_BOARD_FAILURE(5),
+        REQUEST_CODE_NOT_SUPPORTED(1000),
+        COMMAND_PROCESS_ERROR(1001),
+        SYSTEM_BUSY(1002),
+        SYSTEM_ERROR(1003);
         private int code;
 
         ResponseCode(int code) {

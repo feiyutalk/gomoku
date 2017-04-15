@@ -37,7 +37,7 @@ public class NodeConfig implements Serializable {
         private String ip = "localhost";
         private int port = 8080;
         private String identity = UUID.randomUUID().toString();
-        private NodeType nodeType = NodeType.MASTER;
+        private NodeType nodeType = NodeType.SERVER;
         private String registryAddress;
         private int invokeTimeoutMillis = 20000;
         private String workspacePath = Constants.USER_HOME + "/";

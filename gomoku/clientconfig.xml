@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<client>
+    <name>Wanqian</name>
+    <ip>localhost</ip>
+    <port>8000</port>
+    <serverIp>localhost</serverIp>
+    <serverPort>8080</serverPort>
+</client>

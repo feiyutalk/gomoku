@@ -8,12 +8,21 @@ public interface Constants {
 
 	/************************* 	界面相关	*************************/
 	int FONT_SIZE = 18;
-	int BOARD_WIDTH = 500;
-	int BOARD_HIGHT = 550;
-	int JLABLE_PLAYER_WIDTH = 150;
+	int BOARD_WIDTH = 440;
+	int BOARD_HIGHT = 440;
+	int JLABLE_PLAYER_WIDTH = 110;
 	int JLABLE_PLAYER_HEIGHT = 25;
 	int TEXTFIELD_NAME_WIDTH = 100;
 	int TEXTFIELD_NAME_HEIGHT = 25;
+	int TEXTAREA_WIDTH = BOARD_WIDTH - JLABLE_PLAYER_WIDTH;
+	int TEXTAREA_HEIGHT = JLABLE_PLAYER_HEIGHT;
+	int DIMENSION = 10;
+	int BUTTONS_LENGTH = BOARD_WIDTH;
+	int BUTTON_LENGTH = BUTTONS_LENGTH / DIMENSION;
+	int BUTTON_HEIGHT_OFF = JLABLE_PLAYER_HEIGHT * 2;
+
+	int X_OFF = 0;
+	int Y_OFF = 50;
 	
 	/********************   			 系统相关  				  ********************/
 	int AVAILABLE_PROCESSOR = Runtime.getRuntime().availableProcessors();
@@ -65,71 +74,5 @@ public interface Constants {
 	String SUBSCRIBE = "subscribe";
 
 	String UNSUBSCRIBE = "unsubscribe";
-	
-    //启动方式: 0为立即启动，1为手动启动，2为定时启动
-	int PROJECTSTARTATONCE = 0;
-	
-	int PROJECTSTARTBYUSER = 1;
-	
-	int PROJECTSTARTDELAY = 2;
-
-	/**
-	 * 注册中心失败事件重试事件
-	 */
-	String REGISTRY_RETRY_PERIOD_KEY = "retry.period";
-
-	/**
-	 * 重试周期
-	 */
-	int DEFAULT_REGISTRY_RETRY_PERIOD = 5 * 1000;
-
-	Pattern COMMA_SPLIT_PATTERN = Pattern.compile("\\s*[,]+\\s*");
-
-	/**
-	 * 注册中心自动重连时间
-	 */
-	String REGISTRY_RECONNECT_PERIOD_KEY = "reconnect.period";
-
-	int DEFAULT_REGISTRY_RECONNECT_PERIOD = 3 * 1000;
-
-	// 客户端提交并发请求size
-	String JOB_SUBMIT_CONCURRENCY_SIZE = "job.submit.concurrency.size";
-	int DEFAULT_JOB_SUBMIT_CONCURRENCY_SIZE = 100;
-
-	String PROCESSOR_THREAD = "job.processor.thread";
-
-	int LATCH_TIMEOUT_MILLIS = 10 * 60 * 1000; // 10分钟
-
-	// 任务最多重试次数
-	String JOB_MAX_RETRY_TIMES = "job.max.retry.times";
-	int DEFAULT_JOB_MAX_RETRY_TIMES = 10;
-
-	Charset UTF_8 = Charset.forName("UTF-8");
-
-	String MONITOR_DATA_ADD_URL = "/api/monitor/monitor-data-add.do";
-
-	String MONITOR_JVM_INFO_DATA_ADD_URL = "/api/monitor/jvm-info-data-add.do";
-
-	String MONITOR_COMMAND_INFO_ADD_URL = "/api/monitor/command-info-add.do";
-
-	String JOB_PULL_FREQUENCY = "job.pull.frequency";
-	int DEFAULT_JOB_PULL_FREQUENCY = 30;
-
-	// TaskTracker 离线(网络隔离)时间 2 分钟，超过两分钟，自动停止当前执行任务
-	long TASK_TRACKER_OFFLINE_LIMIT_MILLIS = 2 * 60 * 1000;
-	// TaskTracker超过一定时间断线JobTracker，自动停止当前的所有任务
-	String TASK_TRACKER_STOP_WORKING_SWITCH = "stop.working";
-
-	String ADMIN_ID_PREFIX = "LTS_admin_";
-
-	// 是否延迟批量刷盘日志, 如果启用，采用队列的方式批量将日志刷盘(在应用关闭的时候，可能会造成日志丢失)
-	String LAZY_JOB_LOGGER = "lazy.job.logger";
-	// 延迟批量刷盘日志 内存中的最大日志量阀值
-	String LAZY_JOB_LOGGER_MEM_SIZE = "lazy.job.logger.mem.size";
-	// 延迟批量刷盘日志 检查频率
-	String LAZY_JOB_LOGGER_CHECK_PERIOD = "lazy.job.logger.check.period";
-
-	String ADAPTIVE = "adaptive";
-
 
 }

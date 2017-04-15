@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+    <ip>localhost</ip>
+    <port>8080</port>
+    <matches>256</matches>
+</server>

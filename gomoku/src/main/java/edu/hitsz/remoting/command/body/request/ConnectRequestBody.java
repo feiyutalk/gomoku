@@ -1,16 +1,16 @@
 package edu.hitsz.remoting.command.body.request;
 
-import edu.hitsz.cluster.server.UserInfo;
+import edu.hitsz.cluster.client.RemoteUserInfo;
 import edu.hitsz.remoting.command.body.AbstractRemotingCommandBody;
 
 /**
  * Created by Neuclil on 17-4-9.
  */
 public class ConnectRequestBody extends AbstractRemotingCommandBody {
-    private UserInfo userInfo;
+    private RemoteUserInfo remoteUserInfo;
 
-    public ConnectRequestBody(UserInfo userInfo) {
-        this.userInfo = userInfo;
+    public ConnectRequestBody(RemoteUserInfo remoteUserInfo) {
+        this.remoteUserInfo = remoteUserInfo;
     }
 
     @Override
@@ -18,11 +18,19 @@ public class ConnectRequestBody extends AbstractRemotingCommandBody {
 
     }
 
-    public UserInfo getUserInfo() {
-        return userInfo;
+    /************************* 	Getter & Setter	*************************/
+    public RemoteUserInfo getRemoteUserInfo() {
+        return remoteUserInfo;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
+    public void setRemoteUserInfo(RemoteUserInfo remoteUserInfo) {
+        this.remoteUserInfo = remoteUserInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "ConnectRequestBody{" +
+                "remoteUserInfo=" + remoteUserInfo +
+                "} " + super.toString();
     }
 }

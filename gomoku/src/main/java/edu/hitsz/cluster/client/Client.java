@@ -200,8 +200,8 @@ public class Client {
                 for (int j = 0; j < buttons.length; j++) {
                     buttons[i][j] = new JButton();
                     JButton button = buttons[i][j];
-                    button.setBounds(i * Constants.BUTTON_LENGTH,
-                            Constants.BUTTON_HEIGHT_OFF + j * Constants.BUTTON_LENGTH,
+                    button.setBounds(j * Constants.BUTTON_LENGTH,
+                            Constants.BUTTON_HEIGHT_OFF + i * Constants.BUTTON_LENGTH,
                             Constants.BUTTON_LENGTH,
                             Constants.BUTTON_LENGTH);
                     button.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -271,6 +271,7 @@ public class Client {
                         public void actionPerformed(ActionEvent e) {
                             int y =(button.getY()-Constants.Y_OFF)/button.getHeight();
                             int x =(button.getX()-Constants.X_OFF)/button.getWidth();
+                            System.out.println("y="+y+" x="+x);
                             switch (gameState) {
                                 case TURNING:
                                     if (boardState[y][x] == BoardState.NONE) {
@@ -281,6 +282,7 @@ public class Client {
                                                     imageFile));
                                             button.setIcon(new ImageIcon(image));
                                             button.repaint();
+
                                         } catch (Exception e1) {
                                             e1.printStackTrace();
                                         }
@@ -308,13 +310,13 @@ public class Client {
             }
         }
 
-        public boolean changeState(boolean white, int x, int y) {
+        public boolean changeState(boolean white, int y, int x) {
             boolean success = false;
             if (gameState == GameState.WAITING &&
-                    boardState[x][y] == BoardState.NONE) {
+                    boardState[y][x] == BoardState.NONE) {
                 Image image = null;
                 try {
-                    JButton button = buttons[x][y];
+                    JButton button = buttons[y][x];
                     String imageFile = (white == true) ?
                             "/whiteStone.gif" : "/blackStone.gif";
                     image = ImageIO.read(getClass().getResource(
@@ -323,7 +325,7 @@ public class Client {
                     button.repaint();
                     success = true;
                     gameState = GameState.TURNING;
-                    boardState[x][y] = white ? BoardState.WHITE : BoardState.BLACK;
+                    boardState[y][x] = white ? BoardState.WHITE : BoardState.BLACK;
                     secondTextFiled.setText("your turn");
                 } catch (IOException e) {
                     LOG.debug("对方下棋后,改变棋局状态失败!", e);
@@ -340,8 +342,8 @@ public class Client {
             secondTextFiled.setText("Game Over! You Win!:)");
         }
 
-        public void lose(boolean white, int x, int y) {
-            changeState(white, x, y);
+        public void lose(boolean white, int y, int x) {
+            changeState(white, y, x);
             JOptionPane.showMessageDialog(null, "You Lose!:(");
             gameState = GameState.END;
             secondButton.setText("start game");

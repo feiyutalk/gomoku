@@ -24,8 +24,8 @@ public class UserInfo {
                 white?Board.Color.WHITE:Board.Color.BLACK);
     }
 
-    public boolean isWin(int x, int y){
-        return board.isWin(x, y);
+    public boolean isWin(int y, int x){
+        return board.isWin(y, x);
     }
 
     /************************* 	Getter & Setter	*************************/

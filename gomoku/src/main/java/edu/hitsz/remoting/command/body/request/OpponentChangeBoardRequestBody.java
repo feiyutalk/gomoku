@@ -7,13 +7,13 @@ import edu.hitsz.remoting.command.body.AbstractRemotingCommandBody;
  */
 public class OpponentChangeBoardRequestBody extends AbstractRemotingCommandBody{
     private boolean white;
-    private int x;
     private int y;
+    private int x;
 
-    public OpponentChangeBoardRequestBody(boolean white, int x, int y) {
+    public OpponentChangeBoardRequestBody(boolean white, int y, int x) {
         this.white = white;
-        this.x = x;
         this.y = y;
+        this.x = x;
     }
 
     @Override

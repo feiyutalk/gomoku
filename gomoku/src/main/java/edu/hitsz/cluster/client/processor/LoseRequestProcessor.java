@@ -22,9 +22,9 @@ public class LoseRequestProcessor implements RemotingProcessor {
             throws RemotingCommandException {
         LoseRequestBody body = (LoseRequestBody) request.getBody();
         boolean white = body.isWhite();
-        int x = body.getX();
         int y = body.getY();
-        application.getBoard().lose(white, x, y);
+        int x = body.getX();
+        application.getBoard().lose(white, y, x);
         return null;
     }
 }

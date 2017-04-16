@@ -34,17 +34,16 @@ public class ChangeBoardProcessor implements RemotingProcessor {
         int x = body.getX();
         int y = body.getY();
         boolean white = body.isWhite();
+        System.out.println("y="+y+" x="+x);
         //改变Server端自己的棋盘
         boolean success = application.getUserManager().changeUserBoard(id, white, y, x);
         UserInfo userInfo = application.getUserManager().getUserInfo(id);
-        System.out.println(userInfo);
         RemotingCommand response = null;
         if (success) {
             //改变Server端对手的棋盘
             Integer opponentId = application.getGameManager().getOpponentId(id);
             application.getUserManager().changeUserBoard(opponentId, white, y, x);
             UserInfo opponentUserInfo = application.getUserManager().getUserInfo(opponentId);
-            System.out.println(opponentUserInfo);
             //判断是否赢了
             boolean win = userInfo.isWin(y, x);
             if(win){
@@ -55,7 +54,7 @@ public class ChangeBoardProcessor implements RemotingProcessor {
 
                 RemotingCommand opponentRequest = RemotingCommand.createRequestCommand(
                         RemotingProtos.RequestCode.LOSE.code(),
-                        new LoseRequestBody(white, x, y));
+                        new LoseRequestBody(white, y, x));
                 application.getRemotingServer().invokeOneway(opponentUserInfo.getChannel(), opponentRequest);
                 LOG.debug("ChangeBoardProcessor处理请求完成!");
                 return RemotingCommand.createResponseCommand(
@@ -65,7 +64,7 @@ public class ChangeBoardProcessor implements RemotingProcessor {
                 //改变Client端对手的棋盘
                 RemotingCommand requestForOpponent = RemotingCommand.createRequestCommand(
                         RemotingProtos.RequestCode.OPPONENT_CHANGE_BOARD.code(),
-                        new OpponentChangeBoardRequestBody(white, x, y));
+                        new OpponentChangeBoardRequestBody(white, y, x));
                 RemotingCommand opponentResponse = application.getRemotingServer().invokeSync(opponentUserInfo.getChannel(),
                         requestForOpponent);
                 if(opponentResponse.getCode() == RemotingProtos.ResponseCode.CHANGE_OPPONENT_BOARD_SUCCESS.code()){

@@ -35,36 +35,48 @@ public class Board {
     }
 
     public boolean isWin(int y, int x) {
+
+
         Color c = board[y][x];
         boolean iw = false;
         if (c != Color.NONE) {
             int left = 0, right = 0, up = 0, down = 0, lup = 0, ldown = 0, rup = 0, rdown = 0;
-            for (int i = x; i > 0 && board[y][i] == c; --i) {
+            for (int j = x-1; j >= 0 && board[y][j] == c; --j) {
                 left++;
             }
-            for (int i = x+1; i < this.size && board[y][i] == c; ++i) {
+            for (int j = x+1; j < this.size && board[y][j] == c; ++j) {
                 right++;
             }
-            for (int j = y; j > 0 && board[j][x] == c; --j) {
+            for (int i = y-1; i >= 0 && board[i][x] == c; --i) {
                 down++;
             }
-            for (int j = y+1; j < this.size && board[j][x] == c; ++j) {
+            for (int i = y+1; i < this.size && board[i][x] == c; ++i) {
                 up++;
             }
-            for (int i = y, j = x; i <this.size && j > 0 && board[i][j] == c; ++i, --j) {
+            for (int i = y+1, j = x-1; i <this.size && j >= 0 && board[i][j] == c; ++i, --j) {
                 lup++;
             }
-            for (int i = y-1, j = x+1; i > 0 && j < size && board[i][j] == c; --i, ++j) {
+            for (int i = y-1, j = x+1; i >= 0 && j < size && board[i][j] == c; --i, ++j) {
                 rdown++;
             }
-            for (int i = y, j = x; i <this.size  && j < size && board[i][j] == c; ++i, ++j) {
+            for (int i = y+1, j = x+1; i <this.size  && j < size && board[i][j] == c; ++i, ++j) {
                 rup++;
             }
-            for (int i = y-1, j = x-1; i >0  && j > 0 && board[i][j] == c; --i, --j) {
+            for (int i = y-1, j = x-1; i >=0  && j >= 0 && board[i][j] == c; --i, --j) {
                 ldown++;
             }
 
-            iw = ((left + right) == 5) || ((up + down) == 5) || ((lup + rdown) == 5) || ((rup + ldown) == 5);
+            iw = ((left + right) == 4) || ((up + down) == 4) || ((lup + rdown) == 4) || ((rup + ldown) == 4);
+            StringBuilder builder = new StringBuilder();
+            for(int i=0; i<board.length; i++){
+                for(int j=0; j<board.length; j++){
+                    builder.append(board[i][j].name() + " ");
+                }
+                builder.append("\n");
+            }
+            System.out.println(builder.toString());
+            System.out.println("left="+left+" right="+right+" down="+down+" up="+up);
+            System.out.println("ldown="+ldown+" rup="+rup+" lup="+lup+" rdown="+rdown);
         }
 
         return iw;

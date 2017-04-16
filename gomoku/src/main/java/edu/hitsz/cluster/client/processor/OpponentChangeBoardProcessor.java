@@ -27,9 +27,10 @@ public class OpponentChangeBoardProcessor implements RemotingProcessor{
         LOG.debug("OpponentChangeBoardProcessor正在处理请求....");
         OpponentChangeBoardRequestBody body = (OpponentChangeBoardRequestBody) request.getBody();
         boolean white = body.isWhite();
-        int x = body.getX();
         int y = body.getY();
-        boolean success = application.getBoard().changeState(white, x, y);
+        int x = body.getX();
+        System.out.println("OpponentChangeBoardProcessor_"+"y="+y+" x="+x);
+        boolean success = application.getBoard().changeState(white, y, x);
         if(success){
             LOG.debug("OpponentChangeBoardProcessor处理完成!");
             return RemotingCommand.createResponseCommand(

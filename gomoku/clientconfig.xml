@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <client>
-    <name>Taisuke</name>
+    <name>Conghuai</name>
     <gender>male</gender>
     <age>23</age>
-    <from>Japan</from>
+    <from>Fujian</from>
     <image>1</image>
     <ip>localhost</ip>
     <port>8000</port>
-    <serverIp>localhost</serverIp>
+    <serverIp>120.76.28.16</serverIp>
     <serverPort>8888</serverPort>
 </client>

@@ -128,7 +128,7 @@ public class Server {
 
     private void initConfig() {
         Map<String, String> info =
-                Parser.parserServerConfig("serverconfig.xml");
+                Parser.parserServerConfig("/home/gomoku/serverconfig.xml");
         config = new ServerConfig.Builder()
                 .ip(info.get("ip"))
                 .port(Integer.valueOf(info.get("port")))

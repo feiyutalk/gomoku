@@ -179,6 +179,8 @@ public class Client {
         private JLabel secondFromText = null;
 
         /* player list */
+        private JLabel waitPlayer = null;
+        private JLabel waitPlayerText = null;
         private DefaultListModel listModel = null;
         private JList playerList = null;
         private JScrollPane listPane = null;
@@ -217,6 +219,8 @@ public class Client {
             secondFromText = new JLabel();
 
             // player list
+            waitPlayer = new JLabel();
+            waitPlayerText = new JLabel();
             listModel = new DefaultListModel();
             playerList = new JList(listModel);
             listPane = new JScrollPane();
@@ -431,6 +435,18 @@ public class Client {
             this.add(secondFromText);
 
             /************************* 	play list	*************************/
+            waitPlayer.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            waitPlayer.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + 30,
+                    Constants.FIRST_NAME_LABEL_WIDTH,Constants.FIRST_NAME_LABEL_HEIGHT);
+            waitPlayer.setText("wait:");
+
+            waitPlayerText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            waitPlayerText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + 30,
+                    Constants.FIRST_NAME_LABEL_WIDTH,Constants.FIRST_NAME_LABEL_HEIGHT);
+            waitPlayerText.setText("0");
+
             playerList.setFixedCellWidth(200);
             playerList.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
 
@@ -439,23 +455,25 @@ public class Client {
             listPane.setViewportView(playerList);
             listPane.setBorder(new LineBorder(new Color(0, 0, 0)));
             listPane.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
-                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + 30,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 5 * Constants.FIRST_NAME_LABEL_HEIGHT + 20,
                     Constants.FIRST_PLAYER_LOGO_WIDTH, Constants.FIRST_PLAYER_LOGO_HEIGHT);
 
             chanllengeButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
             chanllengeButton.setBorder(new LineBorder(new Color(0, 0, 0)));
             chanllengeButton.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
-                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + Constants.FIRST_PLAYER_LOGO_HEIGHT + 35,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 5 * Constants.FIRST_NAME_LABEL_HEIGHT + Constants.FIRST_PLAYER_LOGO_HEIGHT + 25,
                     Constants.BOARD_BUTTON_WIDTH + 60, Constants.BOARD_BUTTON_HEIGHT);
             chanllengeButton.setText("chanllenge");
 
             randomPickButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
             randomPickButton.setBorder(new LineBorder(new Color(0, 0, 0)));
             randomPickButton.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
-                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + Constants.FIRST_PLAYER_LOGO_HEIGHT + 80,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 5 * Constants.FIRST_NAME_LABEL_HEIGHT + Constants.FIRST_PLAYER_LOGO_HEIGHT + 62,
                     Constants.BOARD_BUTTON_WIDTH + 60, Constants.BOARD_BUTTON_HEIGHT);
             randomPickButton.setText("random match");
 
+            this.add(waitPlayer);
+            this.add(waitPlayerText);
             this.add(listPane);
             this.add(chanllengeButton);
             this.add(randomPickButton);
@@ -765,6 +783,7 @@ public class Client {
                         Image image = ImageIO.read(getClass().getResource(
                                 "/background.gif"));
                         button.setIcon(new ImageIcon(image));
+                        boardState[i][j] = BoardState.NONE;
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
@@ -836,7 +855,24 @@ public class Client {
             playerList.repaint();
         }
 
+
         /************************* 	Getter & Setter	*************************/
+        public JLabel getWaitPlayer() {
+            return waitPlayer;
+        }
+
+        public void setWaitPlayer(JLabel waitPlayer) {
+            this.waitPlayer = waitPlayer;
+        }
+
+        public JLabel getWaitPlayerText() {
+            return waitPlayerText;
+        }
+
+        public void setWaitPlayerText(JLabel waitPlayerText) {
+            this.waitPlayerText = waitPlayerText;
+        }
+
         public boolean isWhite() {
             return white;
         }

@@ -20,7 +20,8 @@ public final class RemotingProtos {
         RANDOM_MATCH(12),
         PUSH_WAIT_USERINFO(13),
         START(14),
-        OPPONENT_START(15);
+        OPPONENT_START(15),
+        SEND_TEXT(16);
         private int code;
 
         private RequestCode(int code) {
@@ -54,6 +55,7 @@ public final class RemotingProtos {
         UNDO_SUCCESS(8),
         CHANLLENGE_SUCCESS(9),
         RANDOM_MATCH_SUCCESS(10),
+        SEND_TEXT_SUCCESS(11),
         REQUEST_CODE_NOT_SUPPORTED(1000),
         COMMAND_PROCESS_ERROR(1001),
         SYSTEM_BUSY(1002),

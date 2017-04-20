@@ -158,6 +158,11 @@ public class Client {
         private JLabel firstFrom = null;
         private JLabel firstFromText = null;
 
+        /* chat */
+        private JTextArea chatTextArea = null;
+        private JScrollPane chatTextPanel = null;
+        private JTextField sendText = null;
+        private JButton sendButton = null;
 
         /* 棋局 */
         private TextField messageTextField = null;
@@ -198,6 +203,12 @@ public class Client {
             firstAgeText = new JLabel();
             firstFrom = new JLabel();
             firstFromText = new JLabel();
+
+            //chat
+            chatTextArea = new JTextArea();
+            chatTextPanel = new JScrollPane(chatTextArea);
+            sendText = new JTextField();
+            sendButton = new JButton();
 
             //棋局
             messageTextField = new TextField();
@@ -300,6 +311,31 @@ public class Client {
             this.add(firstFrom);
             this.add(firstFromText);
 
+            /************************* chat	*************************/
+            chatTextArea.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE - 3));
+            chatTextPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+            chatTextPanel.setBounds(25,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + 30,
+                    Constants.FIRST_PLAYER_LOGO_WIDTH, Constants.FIRST_PLAYER_LOGO_HEIGHT + 40);
+            chatTextArea.setEditable(false);
+            chatTextArea.setLineWrap(true);
+            chatTextArea.setWrapStyleWord(true);
+            chatTextArea.setAutoscrolls(true);
+
+            sendText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE - 3));
+            sendText.setBorder(new LineBorder(new Color(0, 0, 0)));
+            sendText.setBounds(25, 5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + 30 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 50,
+                    Constants.FIRST_PLAYER_LOGO_WIDTH - 40, 30);
+
+            sendButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE - 3));
+            sendButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+            sendButton.setBounds(25 + Constants.FIRST_PLAYER_LOGO_WIDTH - 40 + 5, 5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + 30 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 50,
+                    45, 30);
+            sendButton.setText("send");
+
+            this.add(sendButton);
+            this.add(sendText);
+            this.add(chatTextPanel);
             /************************* 	棋局  *************************/
 
             messageTextField.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE - 3));
@@ -438,13 +474,13 @@ public class Client {
             waitPlayer.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
             waitPlayer.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
                     5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + 30,
-                    Constants.FIRST_NAME_LABEL_WIDTH,Constants.FIRST_NAME_LABEL_HEIGHT);
-            waitPlayer.setText("wait:");
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            waitPlayer.setText("waiting:");
 
             waitPlayerText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
             waitPlayerText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25 + Constants.FIRST_NAME_LABEL_WIDTH,
                     5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + 30,
-                    Constants.FIRST_NAME_LABEL_WIDTH,Constants.FIRST_NAME_LABEL_HEIGHT);
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             waitPlayerText.setText("0");
 
             playerList.setFixedCellWidth(200);
@@ -483,6 +519,23 @@ public class Client {
             this.setVisible(true);
 
             /************************* Action	*************************/
+            sendButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(gameState == GameState.TURNING ||
+                            gameState == GameState.WAITING ||
+                            gameState == GameState.READY){
+                        String text = sendText.getText();
+                        chatTextArea.append(config.getName() + ":" + text + "\n");
+                        sendText.setText("");
+                        RemotingCommand request = RemotingCommand.createRequestCommand(
+                                RemotingProtos.RequestCode.SEND_TEXT.code(),
+                                new SendTextRequestBody(config.getId(), text));
+                        application.getRemotingClient().invokeSync(getServerAddr(), request);
+                    }
+                }
+            });
+
             startButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

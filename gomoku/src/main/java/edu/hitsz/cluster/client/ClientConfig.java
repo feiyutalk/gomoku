@@ -6,6 +6,10 @@ package edu.hitsz.cluster.client;
 public class ClientConfig {
     private int id;
     private String name;
+    private String gender;
+    private int age;
+    private String from;
+    private int image;
     private String ip;
     private int port;
     private String serverIp;
@@ -13,6 +17,10 @@ public class ClientConfig {
 
     private ClientConfig(Builder builder){
         this.name = builder.name;
+        this.gender = builder.gender;
+        this.age = builder.age;
+        this.from = builder.from;
+        this.image = builder.image;
         this.ip = builder.ip;
         this.port = builder.port;
         this.serverIp = builder.serverIp;
@@ -21,6 +29,10 @@ public class ClientConfig {
 
     public static class Builder{
         private String name = "Ronnie";
+        private String gender = "male";
+        private int age = 18;
+        private String from = "China";
+        private int image = 1;
         private String ip = "localhost";
         private int port = 8000;
         private String serverIp = "localhost";
@@ -28,6 +40,26 @@ public class ClientConfig {
 
         public Builder name(String name){
             this.name = name;
+            return this;
+        }
+
+        public Builder gender(String gender){
+            this.gender = gender;
+            return this;
+        }
+
+        public Builder age(int age){
+            this.age = age;
+            return this;
+        }
+
+        public Builder from(String from){
+            this.from = from;
+            return this;
+        }
+
+        public Builder image(int image){
+            this.image = image;
             return this;
         }
 
@@ -71,6 +103,38 @@ public class ClientConfig {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 
     public String getIp() {

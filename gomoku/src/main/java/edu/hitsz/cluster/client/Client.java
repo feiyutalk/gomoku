@@ -2,8 +2,6 @@ package edu.hitsz.cluster.client;
 
 import edu.hitsz.cluster.client.processor.ClientRemotingDispatcher;
 import edu.hitsz.cluster.client.state.GameState;
-import edu.hitsz.cluster.server.Board;
-import edu.hitsz.cluster.server.manager.UserInfo;
 import edu.hitsz.commons.constants.Constants;
 import edu.hitsz.commons.utils.Parser;
 import edu.hitsz.remoting.command.RemotingCommand;
@@ -21,6 +19,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -118,9 +117,14 @@ public class Client {
         Map<String, String> info =
                 Parser.parseClientConfig("clientconfig.xml");
         ClientConfig.Builder builder = new ClientConfig.Builder();
-        config = builder.ip(info.get("ip"))
-                .port(Integer.valueOf(info.get("port")))
+        config = builder
                 .name(info.get("name"))
+                .gender(info.get("gender"))
+                .age(Integer.valueOf(info.get("age")))
+                .from(info.get("from"))
+                .image(Integer.valueOf(info.get("image")))
+                .ip(info.get("ip"))
+                .port(Integer.valueOf(info.get("port")))
                 .serverIp(info.get("serverIp"))
                 .serverPort(Integer.valueOf(info.get("serverPort")))
                 .build();
@@ -135,73 +139,155 @@ public class Client {
 
     public class Board extends JFrame {
         private boolean white;
-        private JLabel leftPlayer = null;
-        private TextField leftName = null;
-        private JLabel rightPlayer = null;
-        private TextField rightName = null;
-        private JButton secondButton = null;
-        private TextField secondTextFiled = null;
+        /* 玩家1 */
+        private JLabel firstPlayer = null;
+        private JLabel firstName = null;
+        private JLabel firstNameText = null;
+        private JLabel firstGender = null;
+        private JLabel firstGenderText = null;
+        private JLabel firstAge = null;
+        private JLabel firstAgeText = null;
+        private JLabel firstFrom = null;
+        private JLabel firstFromText = null;
+
+
+        /* 棋局 */
+        private TextField messageTextField = null;
+        private JButton startButton = null;
+        private JButton undoButton = null;
+        private JButton restartButton = null;
+        private JButton exitButton = null;
         private JButton[][] buttons = null;
 
+        /* 玩家2 */
+        private JLabel secondPlayer = null;
+        private JLabel secondName = null;
+        private JLabel secondNameText = null;
+        private JLabel secondGender = null;
+        private JLabel secondGenderText = null;
+        private JLabel secondAge = null;
+        private JLabel secondAgeText = null;
+        private JLabel secondFrom = null;
+        private JLabel secondFromText = null;
+
         public Board() throws HeadlessException {
-            this.leftPlayer = new JLabel();
-            this.leftName = new TextField();
-            this.rightPlayer = new JLabel();
-            this.rightName = new TextField();
-            this.secondButton = new JButton();
-            this.secondTextFiled = new TextField();
-            this.buttons = new JButton[Constants.DIMENSION][Constants.DIMENSION];
+            //玩家1
+            firstPlayer = new JLabel();
+            firstName = new JLabel();
+            firstNameText = new JLabel();
+            firstGender = new JLabel();
+            firstGenderText = new JLabel();
+            firstAge = new JLabel();
+            firstAgeText = new JLabel();
+            firstFrom = new JLabel();
+            firstFromText = new JLabel();
+
+            //棋局
+            messageTextField = new TextField();
+            buttons = new JButton[Constants.DIMENSION][Constants.DIMENSION];
+            startButton = new JButton();
+            undoButton = new JButton();
+            restartButton = new JButton();
+            exitButton = new JButton();
+
+            //玩家2
+            secondPlayer = new JLabel();
+            secondName = new JLabel();
+            secondNameText = new JLabel();
+            secondGender = new JLabel();
+            secondGenderText = new JLabel();
+            secondAge = new JLabel();
+            secondAgeText = new JLabel();
+            secondFrom = new JLabel();
+            secondFromText = new JLabel();
         }
 
         public void init() {
             this.setLayout(null);
-            this.setSize(Constants.BOARD_WIDTH, Constants.BOARD_HIGHT
-                    + 2 * Constants.JLABLE_PLAYER_HEIGHT);
-            /************************* 	Panel	*************************/
-            /************************* 	First Line	*************************/
-            leftPlayer.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            leftPlayer.setBounds(0, 0, Constants.JLABLE_PLAYER_WIDTH, Constants.JLABLE_PLAYER_HEIGHT);
-            leftPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
-            leftPlayer.setText("Player1");
+            this.setSize(2*Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH,
+                    Constants.FIRST_PANEL_HEIGHT);
+            /************************* 	玩家1	*************************/
+            firstPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
 
-            leftName.setFont(new Font("Times", Font.PLAIN, Constants.FONT_SIZE));
-            leftName.setBounds(Constants.JLABLE_PLAYER_WIDTH, 0, Constants.TEXTFIELD_NAME_WIDTH, Constants.TEXTFIELD_NAME_HEIGHT);
-            leftName.setText(config.getName());
-            leftName.setEditable(false);
+            firstPlayer.setBounds(25,5,
+                    Constants.FIRST_PLAYER_LOGO_WIDTH,Constants.FIRST_PLAYER_LOGO_HEIGHT);
+            firstPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
+            try {
+                Image image = ImageIO.read(getClass().getResource(
+                        File.separator + config.getGender() +
+                              File.separator + config.getImage()+".png"));
+                firstPlayer.setIcon(new ImageIcon(image));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-            rightPlayer.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            rightPlayer.setBounds(Constants.JLABLE_PLAYER_WIDTH + Constants.TEXTFIELD_NAME_WIDTH,
-                    0, Constants.JLABLE_PLAYER_WIDTH, Constants.JLABLE_PLAYER_HEIGHT);
-            rightPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
-            rightPlayer.setText("Player2");
+            firstName.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            firstName.setBounds(25, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+10,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            firstName.setText("Name:");
 
-            rightName.setFont(new Font("Times", Font.PLAIN, Constants.FONT_SIZE));
-            rightName.setBounds(2 * Constants.JLABLE_PLAYER_WIDTH + Constants.TEXTFIELD_NAME_WIDTH,
-                    0, Constants.TEXTFIELD_NAME_WIDTH, Constants.TEXTFIELD_NAME_HEIGHT);
-            rightName.setText("");
-            rightName.setEditable(false);
+            firstNameText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            firstNameText.setBounds(25+Constants.FIRST_NAME_LABEL_WIDTH, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+10,
+                    Constants.FIRST_NAME_TEXT_WIDTH, Constants.FIRST_NAME_TEXT_HEIGHT);
+            firstNameText.setText(config.getName());
 
+            firstGender.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            firstGender.setBounds(25, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+Constants.FIRST_NAME_LABEL_HEIGHT+15,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            firstGender.setText("Gender:");
 
-            /************************* 	Second Line	 *************************/
-            secondButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE - 5));
-            secondButton.setBounds(0, Constants.JLABLE_PLAYER_HEIGHT, Constants.JLABLE_PLAYER_WIDTH,
-                    Constants.JLABLE_PLAYER_HEIGHT);
-            secondButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-            secondButton.setText("start game");
+            firstGenderText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            firstGenderText.setBounds(25+Constants.FIRST_NAME_LABEL_WIDTH,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+Constants.FIRST_NAME_LABEL_HEIGHT+15,
+                    Constants.FIRST_NAME_TEXT_WIDTH, Constants.FIRST_NAME_TEXT_HEIGHT);
+            firstGenderText.setText(config.getGender());
 
-            secondTextFiled.setFont(new Font("Times", Font.ITALIC, Constants.FONT_SIZE));
-            secondTextFiled.setBounds(Constants.JLABLE_PLAYER_WIDTH, Constants.JLABLE_PLAYER_HEIGHT,
-                    Constants.TEXTAREA_WIDTH, Constants.TEXTAREA_HEIGHT);
-            secondTextFiled.setEditable(false);
-            secondTextFiled.setText("  please start the game.");
+            firstAge.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            firstAge.setBounds(25, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+2*Constants.FIRST_NAME_LABEL_HEIGHT+20,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            firstAge.setText("Age :");
 
-            /************************* 	Buttons	*************************/
+            firstAgeText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            firstAgeText.setBounds(25+Constants.FIRST_NAME_LABEL_WIDTH,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+2*Constants.FIRST_NAME_LABEL_HEIGHT+20,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            firstAgeText.setText(config.getAge()+"");
+
+            firstFrom.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            firstFrom.setBounds(25, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+3*Constants.FIRST_NAME_LABEL_HEIGHT+25,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            firstFrom.setText("From:");
+
+            firstFromText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            firstFromText.setBounds(25+Constants.FIRST_NAME_LABEL_WIDTH,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+3*Constants.FIRST_NAME_LABEL_HEIGHT+25,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            firstFromText.setText(config.getFrom());
+
+            this.add(firstPlayer);
+            this.add(firstName);
+            this.add(firstNameText);
+            this.add(firstGender);
+            this.add(firstGenderText);
+            this.add(firstAge);
+            this.add(firstAgeText);
+            this.add(firstFrom);
+            this.add(firstFromText);
+
+            /************************* 	棋局  *************************/
+
+            messageTextField.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE-3));
+            messageTextField.setBounds(Constants.FIRST_PANEL_WIDTH,5,Constants.MESSAGE_TEXT_WIDTH,
+                    Constants.MESSAGE_TEXT_HEIGHT);
+            messageTextField.setEditable(false);
+            messageTextField.setText("Hello, "+config.getName() +". Welcome to GoMoKu Game!");
+
             for (int i = 0; i < buttons.length; i++) {
                 for (int j = 0; j < buttons.length; j++) {
                     buttons[i][j] = new JButton();
                     JButton button = buttons[i][j];
-                    button.setBounds(j * Constants.BUTTON_LENGTH,
-                            Constants.BUTTON_HEIGHT_OFF + i * Constants.BUTTON_LENGTH,
+                    button.setBounds(Constants.BUTTONS_WIDTH_OFF + j * Constants.BUTTON_LENGTH,
+                            Constants.BUTTONS_HEIGHT_OFF + i * Constants.BUTTON_LENGTH,
                             Constants.BUTTON_LENGTH,
                             Constants.BUTTON_LENGTH);
                     button.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -215,63 +301,161 @@ public class Client {
                 }
             }
 
-            /************************* 	Frame	*************************/
-            this.add(leftPlayer);
-            this.add(leftName);
-            this.add(rightPlayer);
-            this.add(rightName);
-            this.add(secondButton);
-            this.add(secondTextFiled);
+            startButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            startButton.setBounds(Constants.FIRST_PANEL_WIDTH+25,
+                    50 + Constants.BOARD_PANEL_WIDTH+10,
+                    Constants.BOARD_BUTTON_WIDTH, Constants.BOARD_BUTTON_HEIGHT);
+            startButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+            startButton.setText("start");
+
+            undoButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            undoButton.setBounds(Constants.FIRST_PANEL_WIDTH+175,
+                    50 + Constants.BOARD_PANEL_WIDTH+10,
+                    Constants.BOARD_BUTTON_WIDTH, Constants.BOARD_BUTTON_HEIGHT);
+            undoButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+            undoButton.setText("undo");
+
+            restartButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            restartButton.setBounds(Constants.FIRST_PANEL_WIDTH + 325,
+                    50 + Constants.BOARD_PANEL_WIDTH+10,
+                    Constants.BOARD_BUTTON_WIDTH, Constants.BOARD_BUTTON_HEIGHT);
+            restartButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+            restartButton.setText("restart");
+
+            exitButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            exitButton.setBounds(Constants.FIRST_PANEL_WIDTH+475,
+                    50 + Constants.BOARD_PANEL_WIDTH + 10,
+                    Constants.BOARD_BUTTON_WIDTH, Constants.BOARD_BUTTON_HEIGHT);
+            exitButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+            exitButton.setText("exit");
+
+            this.add(messageTextField);
             for (int i = 0; i < buttons.length; i++) {
                 for (int j = 0; j < buttons.length; j++) {
                     this.add(buttons[i][j]);
                 }
             }
+            this.add(startButton);
+            this.add(undoButton);
+            this.add(restartButton);
+            this.add(exitButton);
+            /************************* 	玩家2  *************************/
+            secondPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
+            secondPlayer.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,5,
+                    Constants.FIRST_PLAYER_LOGO_WIDTH,Constants.FIRST_PLAYER_LOGO_HEIGHT);
+            secondPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
+            try {
+                Image image = ImageIO.read(getClass().getResource("/?.jpg"));
+                secondPlayer.setIcon(new ImageIcon(image));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            secondName.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            secondName.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+10,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            secondName.setText("Name:");
+
+            secondNameText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            secondNameText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+10,
+                    Constants.FIRST_NAME_TEXT_WIDTH,
+                    Constants.FIRST_NAME_TEXT_HEIGHT);
+
+            secondGender.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            secondGender.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+Constants.FIRST_NAME_LABEL_HEIGHT+15,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            secondGender.setText("Gender:");
+
+            secondGenderText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            secondGenderText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+Constants.FIRST_NAME_LABEL_HEIGHT+15,
+                    Constants.FIRST_NAME_TEXT_WIDTH,
+                    Constants.FIRST_NAME_TEXT_HEIGHT);
+
+            secondAge.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            secondAge.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+2*Constants.FIRST_NAME_LABEL_HEIGHT+20,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            secondAge.setText("Age :");
+
+            secondAgeText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            secondAgeText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+2*Constants.FIRST_NAME_LABEL_HEIGHT+20,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+
+            secondFrom.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            secondFrom.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+3*Constants.FIRST_NAME_LABEL_HEIGHT+25,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+            secondFrom.setText("From:");
+
+            secondFromText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            secondFromText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+3*Constants.FIRST_NAME_LABEL_HEIGHT+25,
+                    Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
+
+            this.add(secondPlayer);
+            this.add(secondName);
+            this.add(secondNameText);
+            this.add(secondGender);
+            this.add(secondGenderText);
+            this.add(secondAge);
+            this.add(secondAgeText);
+            this.add(secondFrom);
+            this.add(secondFromText);
+
+            /************************* 	Frame	*************************/
             this.setTitle("HITSZ-GoMoKu");
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setVisible(true);
 
             /************************* Action	*************************/
-            secondButton.addActionListener(new ActionListener() {
+            startButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    switch (gameState) {
+                    switch(gameState){
                         case READY:
-                            LOG.debug("开始游戏,正在寻找对手....");
-                            if (gameStart.compareAndSet(false, true)) {
-                                secondButton.setText("exit");
-                                secondTextFiled.setText("connecting server...please wait.");
+                            LOG.debug("start game, finding opponents...");
+                            if(gameStart.compareAndSet(false, true)){
+                                messageTextField.setText("connecting server...please wait.");
                                 gameState = GameState.CONNECTING;
                                 RemoteUserInfo remoteUserInfo = new RemoteUserInfo();
+                                remoteUserInfo.setImage(config.getImage());
                                 remoteUserInfo.setName(config.getName());
+                                remoteUserInfo.setGender(config.getGender());
+                                remoteUserInfo.setAge(config.getAge());
+                                remoteUserInfo.setFrom(config.getFrom());
                                 RemotingCommand request = RemotingCommand.createRequestCommand(
                                         RemotingProtos.RequestCode.CONNECT.code(),
-                                        new ConnectRequestBody(remoteUserInfo));
+                                        new ConnectRequestBody(remoteUserInfo)
+                                );
                                 RemotingCommand response = application.getRemotingClient().invokeSync(
                                         config.getServerIp() + ":" + config.getServerPort(),
-                                        request);
-                                config.setId(((ConnectResponseBody) response.getBody()).getId());
-                                if (response.getCode() == RemotingProtos.ResponseCode.CONNECT_SUCCESS.code()) {
-                                    LOG.debug("连接成功!");
-                                    secondTextFiled.setText("connect success! waiting for match");
+                                        request
+                                );
+                                config.setId(((ConnectResponseBody)response.getBody()).getId());
+                                if(response.getCode() == RemotingProtos.ResponseCode.CONNECT_SUCCESS.code()){
+                                    LOG.debug("Connect Success!");
+                                    messageTextField.setText("connect success! waiting for match.");
                                     gameState = GameState.MATCHING;
                                 }
                             }
-                            break;
                     }
                 }
             });
 
             for (int i = 0; i < buttons.length; i++) {
                 for (int j = 0; j < buttons.length; j++) {
-                    //TODO 为什么x y的值和想象中的是反的
                     JButton button = buttons[i][j];
                     button.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            int y =(button.getY()-Constants.Y_OFF)/button.getHeight();
-                            int x =(button.getX()-Constants.X_OFF)/button.getWidth();
-                            System.out.println("y="+y+" x="+x);
+                            int y =(button.getY()-Constants.BUTTONS_HEIGHT_OFF)/button.getHeight();
+                            int x =(button.getX()-Constants.BUTTONS_WIDTH_OFF)/button.getWidth();
                             switch (gameState) {
                                 case TURNING:
                                     if (boardState[y][x] == BoardState.NONE) {
@@ -295,7 +479,7 @@ public class Client {
                                         if (response.getCode() == RemotingProtos.ResponseCode.CHANGE_BOARD_SUCCESS.code()) {
                                             gameState = GameState.WAITING;
                                             boardState[y][x] = (isWhite() == true) ? BoardState.WHITE : BoardState.BLACK;
-                                            secondTextFiled.setText("your opponent's turn, please wait.");
+                                            messageTextField.setText("your opponent's turn, please wait.");
                                             LOG.debug("Server端棋局状态改变成功!");
                                         } else {
                                             //TODO
@@ -326,7 +510,7 @@ public class Client {
                     success = true;
                     gameState = GameState.TURNING;
                     boardState[y][x] = white ? BoardState.WHITE : BoardState.BLACK;
-                    secondTextFiled.setText("your turn");
+                    messageTextField.setText("your turn");
                 } catch (IOException e) {
                     LOG.debug("对方下棋后,改变棋局状态失败!", e);
                     return success;
@@ -338,16 +522,14 @@ public class Client {
         public void win() {
             JOptionPane.showMessageDialog(null, "You Win!:)");
             gameState = GameState.END;
-            secondButton.setText("start game");
-            secondTextFiled.setText("Game Over! You Win!:)");
+            messageTextField.setText("Game Over! You Win!:)");
         }
 
         public void lose(boolean white, int y, int x) {
             changeState(white, y, x);
             JOptionPane.showMessageDialog(null, "You Lose!:(");
             gameState = GameState.END;
-            secondButton.setText("start game");
-            secondTextFiled.setText("Game Over! You Lose!:(");
+            messageTextField.setText("Game Over! You Lose!:(");
         }
 
         /************************* 	Getter & Setter	*************************/
@@ -359,32 +541,196 @@ public class Client {
             this.white = white;
         }
 
-        public JLabel getLeftPlayer() {
-            return leftPlayer;
-        }
-
-        public TextField getLeftName() {
-            return leftName;
-        }
-
-        public JLabel getRightPlayer() {
-            return rightPlayer;
-        }
-
-        public TextField getRightName() {
-            return rightName;
-        }
-
-        public JButton getSecondButton() {
-            return secondButton;
-        }
-
-        public TextField getSecondTextFiled() {
-            return secondTextFiled;
+        public TextField getMessageTextField() {
+            return messageTextField;
         }
 
         public JButton[][] getButtons() {
             return buttons;
+        }
+
+        public JLabel getFirstPlayer() {
+            return firstPlayer;
+        }
+
+        public void setFirstPlayer(JLabel firstPlayer) {
+            this.firstPlayer = firstPlayer;
+        }
+
+        public JLabel getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(JLabel firstName) {
+            this.firstName = firstName;
+        }
+
+        public JLabel getFirstNameText() {
+            return firstNameText;
+        }
+
+        public void setFirstNameText(JLabel firstNameText) {
+            this.firstNameText = firstNameText;
+        }
+
+        public JLabel getFirstGender() {
+            return firstGender;
+        }
+
+        public void setFirstGender(JLabel firstGender) {
+            this.firstGender = firstGender;
+        }
+
+        public JLabel getFirstGenderText() {
+            return firstGenderText;
+        }
+
+        public void setFirstGenderText(JLabel firstGenderText) {
+            this.firstGenderText = firstGenderText;
+        }
+
+        public JLabel getFirstAge() {
+            return firstAge;
+        }
+
+        public void setFirstAge(JLabel firstAge) {
+            this.firstAge = firstAge;
+        }
+
+        public JLabel getFirstAgeText() {
+            return firstAgeText;
+        }
+
+        public void setFirstAgeText(JLabel firstAgeText) {
+            this.firstAgeText = firstAgeText;
+        }
+
+        public JLabel getFirstFrom() {
+            return firstFrom;
+        }
+
+        public void setFirstFrom(JLabel firstFrom) {
+            this.firstFrom = firstFrom;
+        }
+
+        public JLabel getFirstFromText() {
+            return firstFromText;
+        }
+
+        public void setFirstFromText(JLabel firstFromText) {
+            this.firstFromText = firstFromText;
+        }
+
+        public void setMessageTextField(TextField messageTextField) {
+            this.messageTextField = messageTextField;
+        }
+
+        public JButton getStartButton() {
+            return startButton;
+        }
+
+        public void setStartButton(JButton startButton) {
+            this.startButton = startButton;
+        }
+
+        public JButton getUndoButton() {
+            return undoButton;
+        }
+
+        public void setUndoButton(JButton undoButton) {
+            this.undoButton = undoButton;
+        }
+
+        public JButton getRestartButton() {
+            return restartButton;
+        }
+
+        public void setRestartButton(JButton restartButton) {
+            this.restartButton = restartButton;
+        }
+
+        public JButton getExitButton() {
+            return exitButton;
+        }
+
+        public void setExitButton(JButton exitButton) {
+            this.exitButton = exitButton;
+        }
+
+        public void setButtons(JButton[][] buttons) {
+            this.buttons = buttons;
+        }
+
+        public JLabel getSecondPlayer() {
+            return secondPlayer;
+        }
+
+        public void setSecondPlayer(JLabel secondPlayer) {
+            this.secondPlayer = secondPlayer;
+        }
+
+        public JLabel getSecondName() {
+            return secondName;
+        }
+
+        public void setSecondName(JLabel secondName) {
+            this.secondName = secondName;
+        }
+
+        public JLabel getSecondNameText() {
+            return secondNameText;
+        }
+
+        public void setSecondNameText(JLabel secondNameText) {
+            this.secondNameText = secondNameText;
+        }
+
+        public JLabel getSecondGender() {
+            return secondGender;
+        }
+
+        public void setSecondGender(JLabel secondGender) {
+            this.secondGender = secondGender;
+        }
+
+        public JLabel getSecondGenderText() {
+            return secondGenderText;
+        }
+
+        public void setSecondGenderText(JLabel secondGenderText) {
+            this.secondGenderText = secondGenderText;
+        }
+
+        public JLabel getSecondAge() {
+            return secondAge;
+        }
+
+        public void setSecondAge(JLabel secondAge) {
+            this.secondAge = secondAge;
+        }
+
+        public JLabel getSecondAgeText() {
+            return secondAgeText;
+        }
+
+        public void setSecondAgeText(JLabel secondAgeText) {
+            this.secondAgeText = secondAgeText;
+        }
+
+        public JLabel getSecondFrom() {
+            return secondFrom;
+        }
+
+        public void setSecondFrom(JLabel secondFrom) {
+            this.secondFrom = secondFrom;
+        }
+
+        public JLabel getSecondFromText() {
+            return secondFromText;
+        }
+
+        public void setSecondFromText(JLabel secondFromText) {
+            this.secondFromText = secondFromText;
         }
     }
 }

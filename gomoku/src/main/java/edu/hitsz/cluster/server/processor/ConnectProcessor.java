@@ -34,9 +34,15 @@ public class ConnectProcessor implements RemotingProcessor {
         ConnectRequestBody body = (ConnectRequestBody)request.getBody();
         RemoteUserInfo remoteUserInfo = body.getRemoteUserInfo();
         int id =  counter.getAndIncrement();
-        UserInfo userInfo = new UserInfo(remoteUserInfo.getName(),id);
+        UserInfo userInfo = new UserInfo();
         userInfo.setUserState(UserState.WAITING);
         userInfo.setChannel(channel);
+        userInfo.setId(id);
+        userInfo.setName(remoteUserInfo.getName());
+        userInfo.setGender(remoteUserInfo.getGender());
+        userInfo.setImage(remoteUserInfo.getImage());
+        userInfo.setAge(remoteUserInfo.getAge());
+        userInfo.setFrom(remoteUserInfo.getFrom());
         application.getUserManager().addUser(userInfo);
         RemotingCommand response = RemotingCommand.createResponseCommand(
                 RemotingProtos.ResponseCode.CONNECT_SUCCESS.code(),

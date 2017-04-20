@@ -61,16 +61,30 @@ public class Server {
                        public void run() {
                            userInfo1.setWhite(true);
                            userInfo2.setWhite(false);
+                           MatchOpponentRequestBody body1 = new MatchOpponentRequestBody();
+                           body1.setImage(userInfo2.getImage());
+                           body1.setName(userInfo2.getName());
+                           body1.setGender(userInfo2.getGender());
+                           body1.setAge(userInfo2.getAge());
+                           body1.setFrom(userInfo2.getFrom());
+                           body1.setWhite(true);
                            RemotingCommand request1 = RemotingCommand.createRequestCommand(
                                    RemotingProtos.RequestCode.MATCH.code(),
-                                   new MatchOpponentRequestBody(userInfo2.getName(), true));
+                                   body1);
                            RemotingCommand response1 = application.getRemotingServer()
                                    .invokeSync(userInfo1.getChannel(), request1);
                            if(response1.getCode() ==
                                    RemotingProtos.ResponseCode.MATCH_SUCCESS.code()){
+                               MatchOpponentRequestBody body2 =  new MatchOpponentRequestBody();
+                               body2.setImage(userInfo1.getImage());
+                               body2.setName(userInfo1.getName());
+                               body2.setGender(userInfo1.getGender());
+                               body2.setAge(userInfo1.getAge());
+                               body2.setFrom(userInfo1.getFrom());
+                               body2.setWhite(false);
                                RemotingCommand request2 = RemotingCommand.createRequestCommand(
                                        RemotingProtos.RequestCode.MATCH.code(),
-                                       new MatchOpponentRequestBody(userInfo1.getName(), false));
+                                       body2);
                                RemotingCommand response2 = application.getRemotingServer()
                                        .invokeSync(userInfo2.getChannel(), request2);
                                if(response2.getCode() ==
@@ -142,7 +156,7 @@ public class Server {
 
     private void initConfig() {
         Map<String, String> info =
-                Parser.parserServerConfig("/home/frobot/serverconfig.xml");
+                Parser.parserServerConfig("serverconfig.xml");
         config = new ServerConfig.Builder()
                                  .ip(info.get("ip"))
                                  .port(Integer.valueOf(info.get("port")))

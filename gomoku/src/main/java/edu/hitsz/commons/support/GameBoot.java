@@ -10,17 +10,17 @@ import edu.hitsz.cluster.client.state.GameState;
 public class GameBoot {
     public static void start(ClientApplication application){
         try {
-            application.getBoard().getSecondTextFiled().setText("game begin......3");
+            application.getBoard().getMessageTextField().setText("game begin......3");
             Thread.sleep(1000);
-            application.getBoard().getSecondTextFiled().setText("game begin......2");
+            application.getBoard().getMessageTextField().setText("game begin......2");
             Thread.sleep(1000);
-            application.getBoard().getSecondTextFiled().setText("game begin......1");
+            application.getBoard().getMessageTextField().setText("game begin......1");
             Thread.sleep(1000);
             if(application.getBoard().isWhite()){
-                application.getBoard().getSecondTextFiled().setText("your turn");
+                application.getBoard().getMessageTextField().setText("your turn");
                 Client.gameState = GameState.TURNING;
             }else{
-                application.getBoard().getSecondTextFiled().setText("your opponent's turn, please wait.");
+                application.getBoard().getMessageTextField().setText("your opponent's turn, please wait.");
                 Client.gameState = GameState.WAITING;
             }
 

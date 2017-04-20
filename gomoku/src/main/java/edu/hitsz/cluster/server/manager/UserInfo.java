@@ -9,15 +9,14 @@ import edu.hitsz.remoting.Channel;
 public class UserInfo {
     private int id;
     private Channel channel;
+    private int image;
     private String name;
+    private String gender;
+    private int age;
+    private String from;
     private boolean white;
     private UserState userState;
     private Board board;
-
-    public UserInfo(String name, int uid) {
-        this.name = name;
-        this.id = uid;
-    }
 
     public boolean changeBoard(boolean white, int y, int x){
         return board.setPosition(y, x,
@@ -37,12 +36,44 @@ public class UserInfo {
         this.channel = channel;
     }
 
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     public int getId() {

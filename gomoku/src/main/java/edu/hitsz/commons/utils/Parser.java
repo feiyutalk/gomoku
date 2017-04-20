@@ -31,6 +31,14 @@ public class Parser {
 			XMLParseUtil clientConfig = XMLParseUtil.createReadRoot(clientConfigFile);
 			XMLParseUtil nameItem = clientConfig.getChild("name");
 			info.put("name",nameItem.getTextData());
+			XMLParseUtil genderItem = clientConfig.getChild("gender");
+			info.put("gender",genderItem.getTextData());
+			XMLParseUtil ageItem = clientConfig.getChild("age");
+			info.put("age",ageItem.getTextData());
+			XMLParseUtil fromItem = clientConfig.getChild("from");
+			info.put("from",fromItem.getTextData());
+			XMLParseUtil imageItem = clientConfig.getChild("image");
+			info.put("image",imageItem.getTextData());
 			XMLParseUtil ipItem = clientConfig.getChild("ip");
 			info.put("ip", ipItem.getTextData());
 			XMLParseUtil portItem = clientConfig.getChild("port");
@@ -58,7 +66,7 @@ public class Parser {
 			info.put("matches", matchesItem.getTextData());
 			return info;
 		} catch (IOException e) {
-			LOGGER.error("读取clientconfig.xml失败",e);
+			LOGGER.error("读取serverconfig.xml失败",e);
 		}
 		return null;
 	}

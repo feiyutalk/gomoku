@@ -4,13 +4,17 @@ import edu.hitsz.cluster.client.ClientApplication;
 import edu.hitsz.commons.support.GameBoot;
 import edu.hitsz.remoting.Channel;
 import edu.hitsz.remoting.command.RemotingCommand;
-import edu.hitsz.remoting.command.body.RemotingCommandBody;
 import edu.hitsz.remoting.command.body.request.MatchOpponentRequestBody;
 import edu.hitsz.remoting.command.body.response.NullResponseBody;
 import edu.hitsz.remoting.command.protocol.RemotingProtos;
 import edu.hitsz.remoting.exception.RemotingCommandException;
 import edu.hitsz.remoting.processor.RemotingProcessor;
 import org.apache.log4j.Logger;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
 
 /**
  * Created by Neuclil on 17-4-15.
@@ -28,9 +32,29 @@ public class MatchOpponentProcessor implements RemotingProcessor{
             throws RemotingCommandException {
         LOG.debug("MatchOpponentProcessor正在处理请求....");
         MatchOpponentRequestBody body = (MatchOpponentRequestBody)request.getBody();
-        application.getBoard().setWhite(body.isWhite());
-        application.getBoard().getSecondTextFiled().setText("match opponent success!");
-        application.getBoard().getRightName().setText(body.getName());
+        int imageSequnce = body.getImage();
+        String name = body.getName();
+        String gender = body.getGender();
+        int age = body.getAge();
+        String from = body.getFrom();
+        boolean white = body.isWhite();
+        System.out.println(File.separator + gender +
+                File.separator + imageSequnce + ".png");
+        try {
+            Image image = ImageIO.read(getClass().getResource(
+                      File.separator + gender +
+                            File.separator + imageSequnce + ".png"));
+            application.getBoard().getSecondPlayer().setIcon(new ImageIcon(image));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        application.getBoard().getSecondNameText().setText(name);
+        application.getBoard().getSecondGenderText().setText(gender);
+        application.getBoard().getSecondAgeText().setText(age+"");
+        application.getBoard().getSecondFromText().setText(from);
+        application.getBoard().setWhite(white);
+        application.getBoard().getMessageTextField().setText("match opponent success!");
+
         new Thread(new Runnable() {
             @Override
             public void run() {

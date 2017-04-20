@@ -345,7 +345,7 @@ public class Client {
                     Constants.FIRST_PLAYER_LOGO_WIDTH,Constants.FIRST_PLAYER_LOGO_HEIGHT);
             secondPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
             try {
-                Image image = ImageIO.read(getClass().getResource("/?.jpg"));
+                Image image = ImageIO.read(getClass().getResource("/not.jpg"));
                 secondPlayer.setIcon(new ImageIcon(image));
             } catch (Exception e) {
                 e.printStackTrace();

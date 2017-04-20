@@ -539,6 +539,7 @@ public class Client {
                     }
                     if (gameState == GameState.END) {
                         resetBoard();
+                        restartInfoPrint();
                     }
                 }
             });

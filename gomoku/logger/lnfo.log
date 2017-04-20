@@ -1096,3 +1096,7 @@ channel取消注册成功:127.0.0.1:47116
 开始尝试建立通信连接:120.76.28.16:8888
 [ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-20 22:42:55  
 建立远程连接成功:120.76.28.16:8888,edu.hitsz.remoting.netty.NettyChannelFuture@6849758c
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-20 22:55:37  
+开始尝试建立通信连接:120.76.28.16:8888
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-20 22:55:37  
+建立远程连接成功:120.76.28.16:8888,edu.hitsz.remoting.netty.NettyChannelFuture@2a8a6c74

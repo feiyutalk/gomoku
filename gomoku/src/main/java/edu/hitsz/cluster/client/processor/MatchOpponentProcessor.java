@@ -42,8 +42,8 @@ public class MatchOpponentProcessor implements RemotingProcessor{
                 File.separator + imageSequnce + ".png");
         try {
             Image image = ImageIO.read(getClass().getResource(
-                      File.separator + gender +
-                            File.separator + imageSequnce + ".png"));
+                      "/" + gender +
+                            "/" + imageSequnce + ".png"));
             application.getBoard().getSecondPlayer().setIcon(new ImageIcon(image));
         } catch (Exception e) {
             e.printStackTrace();

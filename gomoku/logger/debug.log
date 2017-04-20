@@ -4034,3 +4034,277 @@ channel取消注册成功:127.0.0.1:55266
 空闲用户数不够0
 [ DEBUG ] - [ edu.hitsz.cluster.server.Server$1.run(Server.java:98) ] - 2017-04-20 12:26:18  
 空闲用户数不够0
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.init(Client.java:77) ] - 2017-04-20 13:38:15  
+Client开始初始化....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initConfig(Client.java:131) ] - 2017-04-20 13:38:15  
+Client初始化配置信息成功! ClientConfig{name='Taisuke', ip='localhost', port=8000, serverIp='120.76.28.16', serverPort=8080}
+[ DEBUG ] - [ io.netty.util.internal.logging.InternalLoggerFactory.<clinit>(InternalLoggerFactory.java:45) ] - 2017-04-20 13:38:15  
+Using Log4J as the default logging framework
+[ DEBUG ] - [ io.netty.channel.MultithreadEventLoopGroup.<clinit>(MultithreadEventLoopGroup.java:41) ] - 2017-04-20 13:38:15  
+-Dio.netty.eventLoopThreads: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.isWindows0(PlatformDependent.java:317) ] - 2017-04-20 13:38:15  
+Platform: Windows
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.javaVersion0(PlatformDependent.java:447) ] - 2017-04-20 13:38:15  
+Java version: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:454) ] - 2017-04-20 13:38:15  
+-Dio.netty.noUnsafe: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:61) ] - 2017-04-20 13:38:15  
+java.nio.ByteBuffer.cleaner: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:80) ] - 2017-04-20 13:38:15  
+java.nio.Buffer.address: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:88) ] - 2017-04-20 13:38:15  
+sun.misc.Unsafe.theUnsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:98) ] - 2017-04-20 13:38:15  
+sun.misc.Unsafe.copyMemory: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:138) ] - 2017-04-20 13:38:15  
+java.nio.Bits.unaligned: true
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:481) ] - 2017-04-20 13:38:15  
+sun.misc.Unsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:559) ] - 2017-04-20 13:38:15  
+-Dio.netty.noJavassist: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:571) ] - 2017-04-20 13:38:15  
+Javassist: unavailable
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:572) ] - 2017-04-20 13:38:15  
+You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:76) ] - 2017-04-20 13:38:15  
+-Dio.netty.noPreferDirect: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:88) ] - 2017-04-20 13:38:16  
+-Dio.netty.noKeySetOptimization: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:89) ] - 2017-04-20 13:38:16  
+-Dio.netty.selectorAutoRebuildThreshold: 512
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initRemoting(Client.java:113) ] - 2017-04-20 13:38:17  
+初始化通信服务完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initBoard(Client.java:108) ] - 2017-04-20 13:38:27  
+棋盘初始化成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initApplication(Client.java:95) ] - 2017-04-20 13:38:27  
+初始化application完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:56) ] - 2017-04-20 13:38:27  
+正在开启通信服务....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:63) ] - 2017-04-20 13:38:27  
+通信服务开启成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.init(Client.java:77) ] - 2017-04-20 13:39:58  
+Client开始初始化....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initConfig(Client.java:131) ] - 2017-04-20 13:39:58  
+Client初始化配置信息成功! ClientConfig{name='Taisuke', ip='localhost', port=8000, serverIp='120.76.28.16', serverPort=8080}
+[ DEBUG ] - [ io.netty.util.internal.logging.InternalLoggerFactory.<clinit>(InternalLoggerFactory.java:45) ] - 2017-04-20 13:39:58  
+Using Log4J as the default logging framework
+[ DEBUG ] - [ io.netty.channel.MultithreadEventLoopGroup.<clinit>(MultithreadEventLoopGroup.java:41) ] - 2017-04-20 13:39:58  
+-Dio.netty.eventLoopThreads: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.isWindows0(PlatformDependent.java:317) ] - 2017-04-20 13:39:58  
+Platform: Windows
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.javaVersion0(PlatformDependent.java:447) ] - 2017-04-20 13:39:58  
+Java version: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:454) ] - 2017-04-20 13:39:58  
+-Dio.netty.noUnsafe: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:61) ] - 2017-04-20 13:39:58  
+java.nio.ByteBuffer.cleaner: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:80) ] - 2017-04-20 13:39:58  
+java.nio.Buffer.address: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:88) ] - 2017-04-20 13:39:58  
+sun.misc.Unsafe.theUnsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:98) ] - 2017-04-20 13:39:58  
+sun.misc.Unsafe.copyMemory: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:138) ] - 2017-04-20 13:39:58  
+java.nio.Bits.unaligned: true
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:481) ] - 2017-04-20 13:39:58  
+sun.misc.Unsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:559) ] - 2017-04-20 13:39:58  
+-Dio.netty.noJavassist: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:571) ] - 2017-04-20 13:39:58  
+Javassist: unavailable
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:572) ] - 2017-04-20 13:39:58  
+You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:76) ] - 2017-04-20 13:39:58  
+-Dio.netty.noPreferDirect: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:88) ] - 2017-04-20 13:39:58  
+-Dio.netty.noKeySetOptimization: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:89) ] - 2017-04-20 13:39:58  
+-Dio.netty.selectorAutoRebuildThreshold: 512
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initRemoting(Client.java:113) ] - 2017-04-20 13:40:00  
+初始化通信服务完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initBoard(Client.java:108) ] - 2017-04-20 13:40:10  
+棋盘初始化成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initApplication(Client.java:95) ] - 2017-04-20 13:40:10  
+初始化application完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:56) ] - 2017-04-20 13:40:10  
+正在开启通信服务....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:63) ] - 2017-04-20 13:40:10  
+通信服务开启成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.init(Client.java:77) ] - 2017-04-20 13:41:11  
+Client开始初始化....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initConfig(Client.java:131) ] - 2017-04-20 13:41:11  
+Client初始化配置信息成功! ClientConfig{name='Taisuke', ip='localhost', port=8000, serverIp='120.76.28.16', serverPort=8080}
+[ DEBUG ] - [ io.netty.util.internal.logging.InternalLoggerFactory.<clinit>(InternalLoggerFactory.java:45) ] - 2017-04-20 13:41:11  
+Using Log4J as the default logging framework
+[ DEBUG ] - [ io.netty.channel.MultithreadEventLoopGroup.<clinit>(MultithreadEventLoopGroup.java:41) ] - 2017-04-20 13:41:12  
+-Dio.netty.eventLoopThreads: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.isWindows0(PlatformDependent.java:317) ] - 2017-04-20 13:41:12  
+Platform: Windows
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.javaVersion0(PlatformDependent.java:447) ] - 2017-04-20 13:41:12  
+Java version: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:454) ] - 2017-04-20 13:41:12  
+-Dio.netty.noUnsafe: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:61) ] - 2017-04-20 13:41:12  
+java.nio.ByteBuffer.cleaner: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:80) ] - 2017-04-20 13:41:12  
+java.nio.Buffer.address: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:88) ] - 2017-04-20 13:41:12  
+sun.misc.Unsafe.theUnsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:98) ] - 2017-04-20 13:41:12  
+sun.misc.Unsafe.copyMemory: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:138) ] - 2017-04-20 13:41:12  
+java.nio.Bits.unaligned: true
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:481) ] - 2017-04-20 13:41:12  
+sun.misc.Unsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:559) ] - 2017-04-20 13:41:12  
+-Dio.netty.noJavassist: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:571) ] - 2017-04-20 13:41:12  
+Javassist: unavailable
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:572) ] - 2017-04-20 13:41:12  
+You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:76) ] - 2017-04-20 13:41:12  
+-Dio.netty.noPreferDirect: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:88) ] - 2017-04-20 13:41:12  
+-Dio.netty.noKeySetOptimization: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:89) ] - 2017-04-20 13:41:12  
+-Dio.netty.selectorAutoRebuildThreshold: 512
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initRemoting(Client.java:113) ] - 2017-04-20 13:41:14  
+初始化通信服务完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initBoard(Client.java:108) ] - 2017-04-20 13:41:22  
+棋盘初始化成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initApplication(Client.java:95) ] - 2017-04-20 13:41:22  
+初始化application完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:56) ] - 2017-04-20 13:41:22  
+正在开启通信服务....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:63) ] - 2017-04-20 13:41:22  
+通信服务开启成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$1.actionPerformed(Client.java:422) ] - 2017-04-20 13:41:50  
+start game, finding opponents...
+[ DEBUG ] - [ io.netty.util.internal.ThreadLocalRandom.newSeed(ThreadLocalRandom.java:138) ] - 2017-04-20 13:41:50  
+-Dio.netty.initialSeedUniquifier: 0xddd4e86eb0c5f35d
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-20 13:41:50  
+开始尝试建立通信连接:120.76.28.16:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-20 13:41:50  
+建立远程连接成功:120.76.28.16:8080,edu.hitsz.remoting.netty.NettyChannelFuture@52195e78
+[ DEBUG ] - [ io.netty.util.ResourceLeakDetector.<clinit>(ResourceLeakDetector.java:38) ] - 2017-04-20 13:41:50  
+-Dio.netty.noResourceLeakDetection: false
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-20 13:41:50  
+收到响应指令:CONNECT_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$1.actionPerformed(Client.java:442) ] - 2017-04-20 13:41:50  
+Connect Success!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-20 13:41:54  
+收到请求指令:MATCH
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.MatchOpponentProcessor.processRequest(MatchOpponentProcessor.java:33) ] - 2017-04-20 13:41:54  
+MatchOpponentProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.MatchOpponentProcessor.processRequest(MatchOpponentProcessor.java:67) ] - 2017-04-20 13:41:54  
+MatchOpponentProcessor处理请求完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.init(Client.java:77) ] - 2017-04-20 13:43:30  
+Client开始初始化....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initConfig(Client.java:131) ] - 2017-04-20 13:43:31  
+Client初始化配置信息成功! ClientConfig{name='Taisuke', ip='localhost', port=8000, serverIp='120.76.28.16', serverPort=8080}
+[ DEBUG ] - [ io.netty.util.internal.logging.InternalLoggerFactory.<clinit>(InternalLoggerFactory.java:45) ] - 2017-04-20 13:43:31  
+Using Log4J as the default logging framework
+[ DEBUG ] - [ io.netty.channel.MultithreadEventLoopGroup.<clinit>(MultithreadEventLoopGroup.java:41) ] - 2017-04-20 13:43:31  
+-Dio.netty.eventLoopThreads: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.isWindows0(PlatformDependent.java:317) ] - 2017-04-20 13:43:31  
+Platform: Windows
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.javaVersion0(PlatformDependent.java:447) ] - 2017-04-20 13:43:31  
+Java version: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:454) ] - 2017-04-20 13:43:31  
+-Dio.netty.noUnsafe: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:61) ] - 2017-04-20 13:43:31  
+java.nio.ByteBuffer.cleaner: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:80) ] - 2017-04-20 13:43:31  
+java.nio.Buffer.address: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:88) ] - 2017-04-20 13:43:31  
+sun.misc.Unsafe.theUnsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:98) ] - 2017-04-20 13:43:31  
+sun.misc.Unsafe.copyMemory: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:138) ] - 2017-04-20 13:43:31  
+java.nio.Bits.unaligned: true
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:481) ] - 2017-04-20 13:43:31  
+sun.misc.Unsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:559) ] - 2017-04-20 13:43:31  
+-Dio.netty.noJavassist: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:571) ] - 2017-04-20 13:43:31  
+Javassist: unavailable
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:572) ] - 2017-04-20 13:43:31  
+You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:76) ] - 2017-04-20 13:43:31  
+-Dio.netty.noPreferDirect: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:88) ] - 2017-04-20 13:43:31  
+-Dio.netty.noKeySetOptimization: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:89) ] - 2017-04-20 13:43:31  
+-Dio.netty.selectorAutoRebuildThreshold: 512
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initRemoting(Client.java:113) ] - 2017-04-20 13:43:33  
+初始化通信服务完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initBoard(Client.java:108) ] - 2017-04-20 13:43:42  
+棋盘初始化成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initApplication(Client.java:95) ] - 2017-04-20 13:43:42  
+初始化application完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:56) ] - 2017-04-20 13:43:42  
+正在开启通信服务....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:63) ] - 2017-04-20 13:43:42  
+通信服务开启成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$1.actionPerformed(Client.java:422) ] - 2017-04-20 13:44:07  
+start game, finding opponents...
+[ DEBUG ] - [ io.netty.util.internal.ThreadLocalRandom.newSeed(ThreadLocalRandom.java:138) ] - 2017-04-20 13:44:07  
+-Dio.netty.initialSeedUniquifier: 0xe6a2c473c15d3757
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-20 13:44:07  
+开始尝试建立通信连接:120.76.28.16:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-20 13:44:07  
+建立远程连接成功:120.76.28.16:8080,edu.hitsz.remoting.netty.NettyChannelFuture@5308b313
+[ DEBUG ] - [ io.netty.util.ResourceLeakDetector.<clinit>(ResourceLeakDetector.java:38) ] - 2017-04-20 13:44:07  
+-Dio.netty.noResourceLeakDetection: false
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-20 13:44:07  
+收到响应指令:CONNECT_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$1.actionPerformed(Client.java:442) ] - 2017-04-20 13:44:07  
+Connect Success!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-20 13:44:09  
+收到请求指令:MATCH
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.MatchOpponentProcessor.processRequest(MatchOpponentProcessor.java:33) ] - 2017-04-20 13:44:09  
+MatchOpponentProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.MatchOpponentProcessor.processRequest(MatchOpponentProcessor.java:67) ] - 2017-04-20 13:44:09  
+MatchOpponentProcessor处理请求完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-20 13:44:15  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-20 13:44:15  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-20 13:44:15  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-20 13:44:18  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:483) ] - 2017-04-20 13:44:18  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-20 13:44:23  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-20 13:44:23  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-20 13:44:23  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-20 13:44:25  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:483) ] - 2017-04-20 13:44:25  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-20 13:44:26  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-20 13:44:26  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-20 13:44:26  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-20 13:44:29  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:483) ] - 2017-04-20 13:44:29  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-20 13:44:30  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-20 13:44:30  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-20 13:44:30  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-20 13:44:32  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:483) ] - 2017-04-20 13:44:32  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-20 13:44:34  
+收到请求指令:LOSE

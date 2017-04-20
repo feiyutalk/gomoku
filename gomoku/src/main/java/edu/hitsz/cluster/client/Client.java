@@ -214,8 +214,8 @@ public class Client {
             firstPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
             try {
                 Image image = ImageIO.read(getClass().getResource(
-                        File.separator + config.getGender() +
-                              File.separator + config.getImage()+".png"));
+                        "/" + config.getGender() +
+                              "/" + config.getImage()+".png"));
                 firstPlayer.setIcon(new ImageIcon(image));
             } catch (Exception e) {
                 e.printStackTrace();

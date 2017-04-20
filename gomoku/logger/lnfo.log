@@ -246,3 +246,11 @@ channel取消注册成功:127.0.0.1:55268
 客户端断开链接: 127.0.0.1:55266
 [ INFO ] - [ edu.hitsz.remoting.netty.NettyRemotingServer$NettyConnectManageHandler.channelUnregistered(NettyRemotingServer.java:123) ] - 2017-04-20 12:23:21  
 channel取消注册成功:127.0.0.1:55266
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-20 13:41:50  
+开始尝试建立通信连接:120.76.28.16:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-20 13:41:50  
+建立远程连接成功:120.76.28.16:8080,edu.hitsz.remoting.netty.NettyChannelFuture@52195e78
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-20 13:44:07  
+开始尝试建立通信连接:120.76.28.16:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-20 13:44:07  
+建立远程连接成功:120.76.28.16:8080,edu.hitsz.remoting.netty.NettyChannelFuture@5308b313

@@ -1,10 +1,7 @@
 package edu.hitsz.remoting.delegate;
 
-import edu.hitsz.remoting.RemotingServer;
-import edu.hitsz.remoting.RemotingServerConfig;
+import edu.hitsz.remoting.*;
 import org.apache.log4j.Logger;
-import edu.hitsz.remoting.AsyncCallback;
-import edu.hitsz.remoting.Channel;
 import edu.hitsz.remoting.command.RemotingCommand;
 import edu.hitsz.remoting.netty.NettyRemotingServer;
 import edu.hitsz.remoting.processor.RemotingProcessor;
@@ -16,30 +13,31 @@ import java.util.concurrent.ExecutorService;
  */
 public class RemotingServerDelegate {
     /* 日志 */
-	private static final Logger LOGGER = Logger.getLogger(RemotingServerDelegate.class);
-	/* 真正通信的实体对象 默认底层采用NettyRPC框架 */
+    private static final Logger LOGGER = Logger.getLogger(RemotingServerDelegate.class);
+    /* 真正通信的实体对象 默认底层采用NettyRPC框架 */
     private RemotingServer remotingServer;
     /* 通信服务端配置信息 */
     private RemotingServerConfig remotingServerConfig;
 
     /**
-    * 构造函数
-    */
+     * 构造函数
+     */
     public RemotingServerDelegate() {
-    	remotingServerConfig = new RemotingServerConfig();
+        remotingServerConfig = new RemotingServerConfig();
         remotingServer = new NettyRemotingServer(remotingServerConfig);
     }
 
     /**
-    * 构造函数
-    */
+     * 构造函数
+     */
     public RemotingServerDelegate(RemotingServer remotingServer) {
         this.remotingServer = remotingServer;
     }
 
-    public RemotingServerDelegate(RemotingServerConfig config) {
-    	remotingServerConfig = config;
-        remotingServer = new NettyRemotingServer(config);
+    public RemotingServerDelegate(RemotingServerConfig config,
+                                  ChannelEventListener channelEventListener) {
+        remotingServerConfig = config;
+        remotingServer = new NettyRemotingServer(config, channelEventListener);
     }
 
     public void start() {
@@ -62,7 +60,7 @@ public class RemotingServerDelegate {
         try {
             return remotingServer.invokeSync(channel, request, remotingServerConfig.getInvokeTimeoutMillis());
         } catch (Exception e) {
-        	throw new RuntimeException();
+            throw new RuntimeException();
         }
     }
 

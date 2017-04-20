@@ -3,11 +3,12 @@ package edu.hitsz.cluster.client;
 import edu.hitsz.cluster.client.processor.ClientRemotingDispatcher;
 import edu.hitsz.cluster.client.state.GameState;
 import edu.hitsz.commons.constants.Constants;
+import edu.hitsz.commons.support.GameBoot;
 import edu.hitsz.commons.utils.Parser;
 import edu.hitsz.remoting.command.RemotingCommand;
-import edu.hitsz.remoting.command.body.request.ChangBoardRequestBody;
-import edu.hitsz.remoting.command.body.request.ConnectRequestBody;
+import edu.hitsz.remoting.command.body.request.*;
 import edu.hitsz.remoting.command.body.response.ConnectResponseBody;
+import edu.hitsz.remoting.command.body.response.UndoResponseBody;
 import edu.hitsz.remoting.command.protocol.RemotingProtos;
 import edu.hitsz.remoting.delegate.RemotingClientDelegate;
 import edu.hitsz.remoting.processor.RemotingProcessor;
@@ -19,7 +20,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -36,9 +38,11 @@ public class Client {
     private ClientApplication application;
     public static GameState gameState;
     private BoardState[][] boardState;
+    private AtomicBoolean connectServer = new AtomicBoolean(false);
     private AtomicBoolean gameStart = new AtomicBoolean(false);
     private AtomicBoolean inited = new AtomicBoolean(false);
     private AtomicBoolean remotingStarted = new AtomicBoolean(false);
+    public static int opponId;
 
     public Client() {
         this.application = new ClientApplication();
@@ -104,7 +108,7 @@ public class Client {
         }
         this.board = new Board();
         board.init();
-        gameState = GameState.READY;
+        gameState = GameState.UNCONNECTED;
         LOG.debug("棋盘初始化成功!");
     }
 
@@ -139,6 +143,10 @@ public class Client {
 
     public class Board extends JFrame {
         private boolean white;
+        private int undoTimes = 3;
+        private int moveNum = 0;
+        private int lastX = 0;
+        private int lastY = 0;
         /* 玩家1 */
         private JLabel firstPlayer = null;
         private JLabel firstName = null;
@@ -156,7 +164,7 @@ public class Client {
         private JButton startButton = null;
         private JButton undoButton = null;
         private JButton restartButton = null;
-        private JButton exitButton = null;
+        private JButton connectButton = null;
         private JButton[][] buttons = null;
 
         /* 玩家2 */
@@ -169,6 +177,13 @@ public class Client {
         private JLabel secondAgeText = null;
         private JLabel secondFrom = null;
         private JLabel secondFromText = null;
+
+        /* player list */
+        private DefaultListModel listModel = null;
+        private JList playerList = null;
+        private JScrollPane listPane = null;
+        private JButton chanllengeButton = null;
+        private JButton randomPickButton = null;
 
         public Board() throws HeadlessException {
             //玩家1
@@ -188,7 +203,7 @@ public class Client {
             startButton = new JButton();
             undoButton = new JButton();
             restartButton = new JButton();
-            exitButton = new JButton();
+            connectButton = new JButton();
 
             //玩家2
             secondPlayer = new JLabel();
@@ -200,67 +215,74 @@ public class Client {
             secondAgeText = new JLabel();
             secondFrom = new JLabel();
             secondFromText = new JLabel();
+
+            // player list
+            listModel = new DefaultListModel();
+            playerList = new JList(listModel);
+            listPane = new JScrollPane();
+            chanllengeButton = new JButton();
+            randomPickButton = new JButton();
         }
 
         public void init() {
             this.setLayout(null);
-            this.setSize(2*Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH,
+            this.setSize(2 * Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH,
                     Constants.FIRST_PANEL_HEIGHT);
             /************************* 	玩家1	*************************/
             firstPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
 
-            firstPlayer.setBounds(25,5,
-                    Constants.FIRST_PLAYER_LOGO_WIDTH,Constants.FIRST_PLAYER_LOGO_HEIGHT);
+            firstPlayer.setBounds(25, 5,
+                    Constants.FIRST_PLAYER_LOGO_WIDTH, Constants.FIRST_PLAYER_LOGO_HEIGHT);
             firstPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
             try {
                 Image image = ImageIO.read(getClass().getResource(
                         "/" + config.getGender() +
-                              "/" + config.getImage()+".png"));
+                                "/" + config.getImage() + ".png"));
                 firstPlayer.setIcon(new ImageIcon(image));
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
             firstName.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            firstName.setBounds(25, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+10,
+            firstName.setBounds(25, 5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 10,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             firstName.setText("Name:");
 
             firstNameText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            firstNameText.setBounds(25+Constants.FIRST_NAME_LABEL_WIDTH, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+10,
+            firstNameText.setBounds(25 + Constants.FIRST_NAME_LABEL_WIDTH, 5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 10,
                     Constants.FIRST_NAME_TEXT_WIDTH, Constants.FIRST_NAME_TEXT_HEIGHT);
             firstNameText.setText(config.getName());
 
             firstGender.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            firstGender.setBounds(25, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+Constants.FIRST_NAME_LABEL_HEIGHT+15,
+            firstGender.setBounds(25, 5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + Constants.FIRST_NAME_LABEL_HEIGHT + 15,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             firstGender.setText("Gender:");
 
             firstGenderText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            firstGenderText.setBounds(25+Constants.FIRST_NAME_LABEL_WIDTH,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+Constants.FIRST_NAME_LABEL_HEIGHT+15,
+            firstGenderText.setBounds(25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + Constants.FIRST_NAME_LABEL_HEIGHT + 15,
                     Constants.FIRST_NAME_TEXT_WIDTH, Constants.FIRST_NAME_TEXT_HEIGHT);
             firstGenderText.setText(config.getGender());
 
             firstAge.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            firstAge.setBounds(25, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+2*Constants.FIRST_NAME_LABEL_HEIGHT+20,
+            firstAge.setBounds(25, 5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 2 * Constants.FIRST_NAME_LABEL_HEIGHT + 20,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             firstAge.setText("Age :");
 
             firstAgeText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            firstAgeText.setBounds(25+Constants.FIRST_NAME_LABEL_WIDTH,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+2*Constants.FIRST_NAME_LABEL_HEIGHT+20,
+            firstAgeText.setBounds(25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 2 * Constants.FIRST_NAME_LABEL_HEIGHT + 20,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
-            firstAgeText.setText(config.getAge()+"");
+            firstAgeText.setText(config.getAge() + "");
 
             firstFrom.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            firstFrom.setBounds(25, 5+Constants.FIRST_PLAYER_LOGO_HEIGHT+3*Constants.FIRST_NAME_LABEL_HEIGHT+25,
+            firstFrom.setBounds(25, 5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 3 * Constants.FIRST_NAME_LABEL_HEIGHT + 25,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             firstFrom.setText("From:");
 
             firstFromText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            firstFromText.setBounds(25+Constants.FIRST_NAME_LABEL_WIDTH,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+3*Constants.FIRST_NAME_LABEL_HEIGHT+25,
+            firstFromText.setBounds(25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 3 * Constants.FIRST_NAME_LABEL_HEIGHT + 25,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             firstFromText.setText(config.getFrom());
 
@@ -276,11 +298,11 @@ public class Client {
 
             /************************* 	棋局  *************************/
 
-            messageTextField.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE-3));
-            messageTextField.setBounds(Constants.FIRST_PANEL_WIDTH,5,Constants.MESSAGE_TEXT_WIDTH,
+            messageTextField.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE - 3));
+            messageTextField.setBounds(Constants.FIRST_PANEL_WIDTH, 5, Constants.MESSAGE_TEXT_WIDTH,
                     Constants.MESSAGE_TEXT_HEIGHT);
             messageTextField.setEditable(false);
-            messageTextField.setText("Hello, "+config.getName() +". Welcome to GoMoKu Game!");
+            messageTextField.setText("Hello, " + config.getName() + ". Welcome to GoMoKu Game!");
 
             for (int i = 0; i < buttons.length; i++) {
                 for (int j = 0; j < buttons.length; j++) {
@@ -302,32 +324,32 @@ public class Client {
             }
 
             startButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            startButton.setBounds(Constants.FIRST_PANEL_WIDTH+25,
-                    50 + Constants.BOARD_PANEL_WIDTH+10,
+            startButton.setBounds(Constants.FIRST_PANEL_WIDTH + 25,
+                    50 + Constants.BOARD_PANEL_WIDTH + 10,
                     Constants.BOARD_BUTTON_WIDTH, Constants.BOARD_BUTTON_HEIGHT);
             startButton.setBorder(new LineBorder(new Color(0, 0, 0)));
             startButton.setText("start");
 
             undoButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            undoButton.setBounds(Constants.FIRST_PANEL_WIDTH+175,
-                    50 + Constants.BOARD_PANEL_WIDTH+10,
+            undoButton.setBounds(Constants.FIRST_PANEL_WIDTH + 175,
+                    50 + Constants.BOARD_PANEL_WIDTH + 10,
                     Constants.BOARD_BUTTON_WIDTH, Constants.BOARD_BUTTON_HEIGHT);
             undoButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-            undoButton.setText("undo");
+            undoButton.setText("undo 3");
 
             restartButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
             restartButton.setBounds(Constants.FIRST_PANEL_WIDTH + 325,
-                    50 + Constants.BOARD_PANEL_WIDTH+10,
+                    50 + Constants.BOARD_PANEL_WIDTH + 10,
                     Constants.BOARD_BUTTON_WIDTH, Constants.BOARD_BUTTON_HEIGHT);
             restartButton.setBorder(new LineBorder(new Color(0, 0, 0)));
             restartButton.setText("restart");
 
-            exitButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            exitButton.setBounds(Constants.FIRST_PANEL_WIDTH+475,
+            connectButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            connectButton.setBounds(Constants.FIRST_PANEL_WIDTH + 475,
                     50 + Constants.BOARD_PANEL_WIDTH + 10,
                     Constants.BOARD_BUTTON_WIDTH, Constants.BOARD_BUTTON_HEIGHT);
-            exitButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-            exitButton.setText("exit");
+            connectButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+            connectButton.setText("connect");
 
             this.add(messageTextField);
             for (int i = 0; i < buttons.length; i++) {
@@ -338,11 +360,11 @@ public class Client {
             this.add(startButton);
             this.add(undoButton);
             this.add(restartButton);
-            this.add(exitButton);
+            this.add(connectButton);
             /************************* 	玩家2  *************************/
             secondPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
-            secondPlayer.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,5,
-                    Constants.FIRST_PLAYER_LOGO_WIDTH,Constants.FIRST_PLAYER_LOGO_HEIGHT);
+            secondPlayer.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25, 5,
+                    Constants.FIRST_PLAYER_LOGO_WIDTH, Constants.FIRST_PLAYER_LOGO_HEIGHT);
             secondPlayer.setBorder(new LineBorder(new Color(0, 0, 0)));
             try {
                 Image image = ImageIO.read(getClass().getResource("/not.jpg"));
@@ -353,49 +375,49 @@ public class Client {
 
 
             secondName.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            secondName.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+10,
+            secondName.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 10,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             secondName.setText("Name:");
 
             secondNameText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            secondNameText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25 + Constants.FIRST_NAME_LABEL_WIDTH,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+10,
+            secondNameText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 10,
                     Constants.FIRST_NAME_TEXT_WIDTH,
                     Constants.FIRST_NAME_TEXT_HEIGHT);
 
             secondGender.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            secondGender.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+Constants.FIRST_NAME_LABEL_HEIGHT+15,
+            secondGender.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + Constants.FIRST_NAME_LABEL_HEIGHT + 15,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             secondGender.setText("Gender:");
 
             secondGenderText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            secondGenderText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25 + Constants.FIRST_NAME_LABEL_WIDTH,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+Constants.FIRST_NAME_LABEL_HEIGHT+15,
+            secondGenderText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + Constants.FIRST_NAME_LABEL_HEIGHT + 15,
                     Constants.FIRST_NAME_TEXT_WIDTH,
                     Constants.FIRST_NAME_TEXT_HEIGHT);
 
             secondAge.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            secondAge.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+2*Constants.FIRST_NAME_LABEL_HEIGHT+20,
+            secondAge.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 2 * Constants.FIRST_NAME_LABEL_HEIGHT + 20,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             secondAge.setText("Age :");
 
             secondAgeText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            secondAgeText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25 + Constants.FIRST_NAME_LABEL_WIDTH,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+2*Constants.FIRST_NAME_LABEL_HEIGHT+20,
+            secondAgeText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 2 * Constants.FIRST_NAME_LABEL_HEIGHT + 20,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
 
             secondFrom.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            secondFrom.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+3*Constants.FIRST_NAME_LABEL_HEIGHT+25,
+            secondFrom.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 3 * Constants.FIRST_NAME_LABEL_HEIGHT + 25,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
             secondFrom.setText("From:");
 
             secondFromText.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
-            secondFromText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH+25 + Constants.FIRST_NAME_LABEL_WIDTH,
-                    5+Constants.FIRST_PLAYER_LOGO_HEIGHT+3*Constants.FIRST_NAME_LABEL_HEIGHT+25,
+            secondFromText.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25 + Constants.FIRST_NAME_LABEL_WIDTH,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 3 * Constants.FIRST_NAME_LABEL_HEIGHT + 25,
                     Constants.FIRST_NAME_LABEL_WIDTH, Constants.FIRST_NAME_LABEL_HEIGHT);
 
             this.add(secondPlayer);
@@ -408,6 +430,35 @@ public class Client {
             this.add(secondFrom);
             this.add(secondFromText);
 
+            /************************* 	play list	*************************/
+            playerList.setFixedCellWidth(200);
+            playerList.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+
+            listPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            listPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            listPane.setViewportView(playerList);
+            listPane.setBorder(new LineBorder(new Color(0, 0, 0)));
+            listPane.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + 30,
+                    Constants.FIRST_PLAYER_LOGO_WIDTH, Constants.FIRST_PLAYER_LOGO_HEIGHT);
+
+            chanllengeButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            chanllengeButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+            chanllengeButton.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + Constants.FIRST_PLAYER_LOGO_HEIGHT + 35,
+                    Constants.BOARD_BUTTON_WIDTH + 60, Constants.BOARD_BUTTON_HEIGHT);
+            chanllengeButton.setText("chanllenge");
+
+            randomPickButton.setFont(new Font("Times", Font.CENTER_BASELINE, Constants.FONT_SIZE));
+            randomPickButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+            randomPickButton.setBounds(Constants.FIRST_PANEL_WIDTH + Constants.BOARD_PANEL_WIDTH + 25,
+                    5 + Constants.FIRST_PLAYER_LOGO_HEIGHT + 4 * Constants.FIRST_NAME_LABEL_HEIGHT + Constants.FIRST_PLAYER_LOGO_HEIGHT + 80,
+                    Constants.BOARD_BUTTON_WIDTH + 60, Constants.BOARD_BUTTON_HEIGHT);
+            randomPickButton.setText("random match");
+
+            this.add(listPane);
+            this.add(chanllengeButton);
+            this.add(randomPickButton);
             /************************* 	Frame	*************************/
             this.setTitle("HITSZ-GoMoKu");
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -417,33 +468,92 @@ public class Client {
             startButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    switch(gameState){
-                        case READY:
-                            LOG.debug("start game, finding opponents...");
-                            if(gameStart.compareAndSet(false, true)){
-                                messageTextField.setText("connecting server...please wait.");
-                                gameState = GameState.CONNECTING;
-                                RemoteUserInfo remoteUserInfo = new RemoteUserInfo();
-                                remoteUserInfo.setImage(config.getImage());
-                                remoteUserInfo.setName(config.getName());
-                                remoteUserInfo.setGender(config.getGender());
-                                remoteUserInfo.setAge(config.getAge());
-                                remoteUserInfo.setFrom(config.getFrom());
-                                RemotingCommand request = RemotingCommand.createRequestCommand(
-                                        RemotingProtos.RequestCode.CONNECT.code(),
-                                        new ConnectRequestBody(remoteUserInfo)
-                                );
-                                RemotingCommand response = application.getRemotingClient().invokeSync(
-                                        config.getServerIp() + ":" + config.getServerPort(),
-                                        request
-                                );
-                                config.setId(((ConnectResponseBody)response.getBody()).getId());
-                                if(response.getCode() == RemotingProtos.ResponseCode.CONNECT_SUCCESS.code()){
-                                    LOG.debug("Connect Success!");
-                                    messageTextField.setText("connect success! waiting for match.");
-                                    gameState = GameState.MATCHING;
-                                }
+                    if (gameState == GameState.READY) {
+                        LOG.debug("start game");
+                        if (gameStart.compareAndSet(false, true)) {
+                            RemotingCommand request = RemotingCommand.createRequestCommand(
+                                    RemotingProtos.RequestCode.START.code(),
+                                    new StartRequestBody(config.getId()));
+                            application.getRemotingClient().invokeSync(getServerAddr(), request);
+                            GameBoot.start(application);
+                        }
+                    }
+                }
+            });
+
+            undoButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (gameState == GameState.TURNING && undoTimes > 0 && moveNum > 0) {
+                        RemotingCommand request = RemotingCommand.createRequestCommand(
+                                RemotingProtos.RequestCode.UNDO.code(),
+                                new UndoRequstBody(config.getId(), lastY, lastX));
+                        RemotingCommand response = application.getRemotingClient().invokeSync(getServerAddr(), request);
+                        if (response.getCode() == RemotingProtos.ResponseCode.UNDO_SUCCESS.code()) {
+                            UndoResponseBody body = (UndoResponseBody) response.getBody();
+                            undo();
+                            undo(body.getLastY(), body.getLastX());
+                            undoTimes--;
+                            undoButton.setText("undo " + undoTimes);
+                        }
+                    }
+                }
+            });
+
+            restartButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (gameState == GameState.TURNING ||
+                            gameState == GameState.WAITING) {
+                        lose();
+
+                        resetBoard();
+
+                        RemotingCommand request = RemotingCommand.createRequestCommand(
+                                RemotingProtos.RequestCode.RESTART.code(),
+                                new RestartRequestBody(config.getId()));
+
+                        RemotingCommand response = application.getRemotingClient().invokeSync(getServerAddr(),
+                                request);
+                        if (response.getCode() == RemotingProtos.ResponseCode.RESTART_SUCCESS.code()) {
+                            restartInfoPrint();
+                        }
+                    }
+                    if (gameState == GameState.END) {
+                        resetBoard();
+                    }
+                }
+            });
+
+            connectButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (gameState == GameState.UNCONNECTED) {
+                        LOG.debug("start game, finding opponents...");
+                        if (connectServer.compareAndSet(false, true)) {
+                            messageTextField.setText("connecting server...please wait.");
+                            gameState = GameState.CONNECTING;
+                            RemoteUserInfo remoteUserInfo = new RemoteUserInfo();
+                            remoteUserInfo.setImage(config.getImage());
+                            remoteUserInfo.setName(config.getName());
+                            remoteUserInfo.setGender(config.getGender());
+                            remoteUserInfo.setAge(config.getAge());
+                            remoteUserInfo.setFrom(config.getFrom());
+                            RemotingCommand request = RemotingCommand.createRequestCommand(
+                                    RemotingProtos.RequestCode.CONNECT.code(),
+                                    new ConnectRequestBody(remoteUserInfo)
+                            );
+                            RemotingCommand response = application.getRemotingClient().invokeSync(
+                                    getServerAddr(),
+                                    request
+                            );
+                            config.setId(((ConnectResponseBody) response.getBody()).getId());
+                            if (response.getCode() == RemotingProtos.ResponseCode.CONNECT_SUCCESS.code()) {
+                                LOG.debug("Connect Success!");
+                                messageTextField.setText("connect success! waiting for match.");
+                                gameState = GameState.MATCHING;
                             }
+                        }
                     }
                 }
             });
@@ -454,45 +564,114 @@ public class Client {
                     button.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            int y =(button.getY()-Constants.BUTTONS_HEIGHT_OFF)/button.getHeight();
-                            int x =(button.getX()-Constants.BUTTONS_WIDTH_OFF)/button.getWidth();
-                            switch (gameState) {
-                                case TURNING:
-                                    if (boardState[y][x] == BoardState.NONE) {
-                                        try {
-                                            String imageFile = (isWhite() == true)
-                                                    ? "/whiteStone.gif" : "/blackStone.gif";
-                                            Image image = ImageIO.read(getClass().getResource(
-                                                    imageFile));
-                                            button.setIcon(new ImageIcon(image));
-                                            button.repaint();
-
-                                        } catch (Exception e1) {
-                                            e1.printStackTrace();
-                                        }
-                                        RemotingCommand request = RemotingCommand.createRequestCommand(
-                                                RemotingProtos.RequestCode.CHANGE_BOARD.code(),
-                                                new ChangBoardRequestBody(config.getId(), isWhite(), y, x));
-                                        RemotingCommand response = application.getRemotingClient().invokeSync(
-                                                config.getServerIp() + ":" + config.getServerPort(),
-                                                request);
-                                        if (response.getCode() == RemotingProtos.ResponseCode.CHANGE_BOARD_SUCCESS.code()) {
-                                            gameState = GameState.WAITING;
-                                            boardState[y][x] = (isWhite() == true) ? BoardState.WHITE : BoardState.BLACK;
-                                            messageTextField.setText("your opponent's turn, please wait.");
-                                            LOG.debug("Server端棋局状态改变成功!");
-                                        } else {
-                                            //TODO
-                                            LOG.debug("Server端棋局状态改变失败!");
-                                        }
+                            int y = (button.getY() - Constants.BUTTONS_HEIGHT_OFF) / button.getHeight();
+                            int x = (button.getX() - Constants.BUTTONS_WIDTH_OFF) / button.getWidth();
+                            lastY = y;
+                            lastX = x;
+                            if (gameState == GameState.TURNING) {
+                                if (boardState[y][x] == BoardState.NONE) {
+                                    try {
+                                        String imageFile = (isWhite() == true)
+                                                ? "/whiteStone.gif" : "/blackStone.gif";
+                                        Image image = ImageIO.read(getClass().getResource(
+                                                imageFile));
+                                        button.setIcon(new ImageIcon(image));
+                                        button.repaint();
+                                    } catch (Exception e1) {
+                                        e1.printStackTrace();
                                     }
-                                    break;
+                                    RemotingCommand request = RemotingCommand.createRequestCommand(
+                                            RemotingProtos.RequestCode.CHANGE_BOARD.code(),
+                                            new ChangBoardRequestBody(config.getId(), isWhite(), y, x));
+                                    RemotingCommand response = application.getRemotingClient().invokeSync(
+                                            getServerAddr(),
+                                            request);
+                                    if (response.getCode() == RemotingProtos.ResponseCode.CHANGE_BOARD_SUCCESS.code()) {
+                                        gameState = GameState.WAITING;
+                                        boardState[y][x] = (isWhite() == true) ? BoardState.WHITE : BoardState.BLACK;
+                                        moveNum++;
+                                        messageTextField.setText("your opponent's turn, please wait.");
+                                        LOG.debug("Server端棋局状态改变成功!");
+                                    } else {
+                                        LOG.debug("Server端棋局状态改变失败!");
+                                    }
+                                }
                             }
                         }
                     });
                 }
             }
+
+            playerList.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (gameState == GameState.MATCHING) {
+                        int target;
+                        if (e.getClickCount() == 2) {
+                            if (opponId == 0) {
+                                if (!playerList.isSelectionEmpty()) {
+                                    String s = (String) playerList.getSelectedValue();
+                                    String[] infos = s.split("-");
+                                    target = Integer.parseInt(infos[0]);
+                                    if (target != config.getId()) {
+                                        messageTextField.setText("wait for oppoenent accept challenge, please wait.");
+                                        RemotingCommand request = RemotingCommand.createRequestCommand(
+                                                RemotingProtos.RequestCode.CHALLENGE.code(),
+                                                new ChallengeRequestBody(config.getId(), target));
+                                        application.getRemotingClient().invokeSync(getServerAddr(), request);
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "can't challenge yourself!");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            chanllengeButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (gameState == GameState.MATCHING) {
+                        int target;
+                        if (opponId == 0) {
+                            if (!playerList.isSelectionEmpty()) {
+                                String s = (String) playerList.getSelectedValue();
+                                String[] infos = s.split("-");
+                                target = Integer.parseInt(infos[0]);
+                                if (target != config.getId()) {
+                                    messageTextField.setText("wait for oppoenent accept challenge, please wait.");
+                                    RemotingCommand request = RemotingCommand.createRequestCommand(
+                                            RemotingProtos.RequestCode.CHALLENGE.code(),
+                                            new ChallengeRequestBody(config.getId(), target));
+                                    application.getRemotingClient().invokeSync(getServerAddr(), request);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "can't challenge yourself!");
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            randomPickButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (gameState == GameState.MATCHING) {
+                        int target;
+                        if (opponId == 0) {
+                            RemotingCommand request = RemotingCommand.createRequestCommand(
+                                    RemotingProtos.RequestCode.RANDOM_MATCH.code(),
+                                    new RandomMathRequestBody(config.getId()));
+                            application.getRemotingClient().invokeSync(getServerAddr(), request);
+                        }
+                    }
+                }
+            });
         }
+
+
+        /************************* 	method	*************************/
 
         public boolean changeState(boolean white, int y, int x) {
             boolean success = false;
@@ -519,10 +698,27 @@ public class Client {
             return success;
         }
 
+        public void exit() {
+            JOptionPane.showMessageDialog(null, "Your Opponent Leave!");
+            messageTextField.setText("Your Opponent Leave! find other opponent.");
+        }
+
+        public void exitWin() {
+            JOptionPane.showMessageDialog(null, "Your Opponent Leave! You Win!:)");
+            gameState = GameState.MATCHING;
+            messageTextField.setText("Your Opponent Leave! You Win!:)");
+        }
+
         public void win() {
             JOptionPane.showMessageDialog(null, "You Win!:)");
-            gameState = GameState.END;
+            gameState = GameState.MATCHING;
             messageTextField.setText("Game Over! You Win!:)");
+        }
+
+        public void lose() {
+            JOptionPane.showMessageDialog(null, "You Lose!:(");
+            gameState = GameState.END;
+            messageTextField.setText("Game Over! You Lose!:(");
         }
 
         public void lose(boolean white, int y, int x) {
@@ -530,6 +726,114 @@ public class Client {
             JOptionPane.showMessageDialog(null, "You Lose!:(");
             gameState = GameState.END;
             messageTextField.setText("Game Over! You Lose!:(");
+        }
+
+        private String getServerAddr() {
+            return config.getServerIp() + ":" + config.getServerPort();
+        }
+
+        public void reset() {
+            opponId = 0;
+            resetBoard();
+            resetUndo();
+            resetOpponent();
+        }
+
+        public void resetOpponent() {
+            try {
+                Image image = ImageIO.read(getClass().getResource("/not.jpg"));
+                secondPlayer.setIcon(new ImageIcon(image));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            secondNameText.setText("");
+            secondGenderText.setText("");
+            secondAgeText.setText("");
+            secondFromText.setText("");
+        }
+
+        public void resetUndo() {
+            undoTimes = 3;
+            undoButton.setText("undo 3");
+        }
+
+        public void resetBoard() {
+            for (int i = 0; i < buttons.length; i++) {
+                for (int j = 0; j < buttons.length; j++) {
+                    JButton button = buttons[i][j];
+                    try {
+                        Image image = ImageIO.read(getClass().getResource(
+                                "/background.gif"));
+                        button.setIcon(new ImageIcon(image));
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        public void restartInfoPrint() {
+            try {
+                Thread.sleep(1000);
+                messageTextField.setText("game begin......5");
+                Thread.sleep(1000);
+                messageTextField.setText("game begin......4");
+                Thread.sleep(1000);
+                messageTextField.setText("game begin......3");
+                Thread.sleep(1000);
+                messageTextField.setText("game begin......2");
+                Thread.sleep(1000);
+                messageTextField.setText("game begin......1");
+                Thread.sleep(1000);
+                if (isWhite()) {
+                    messageTextField.setText("you turn.");
+                    gameState = GameState.TURNING;
+                } else {
+                    messageTextField.setText("your opponent's turn, please wait.");
+                    gameState = GameState.WAITING;
+                }
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        public void undo() {
+            JButton button = buttons[lastY][lastX];
+            try {
+                Image image = ImageIO.read(getClass().getResource(
+                        "/background.gif"));
+                button.setIcon(new ImageIcon(image));
+                boardState[lastY][lastX] = BoardState.NONE;
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        public void undo(int lastY, int lastX) {
+            JButton button = buttons[lastY][lastX];
+            try {
+                Image image = ImageIO.read(getClass().getResource(
+                        "/background.gif"));
+                button.setIcon(new ImageIcon(image));
+                boardState[lastY][lastX] = BoardState.NONE;
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        public void addPlayer(String name) {
+            listModel.addElement(name);
+            playerList.repaint();
+        }
+
+        public void removePlayer(String name) {
+            listModel.removeElement(name);
+            playerList.repaint();
+        }
+
+        public void clearPlayerList() {
+            listModel.clear();
+            playerList.repaint();
         }
 
         /************************* 	Getter & Setter	*************************/
@@ -649,12 +953,12 @@ public class Client {
             this.restartButton = restartButton;
         }
 
-        public JButton getExitButton() {
-            return exitButton;
+        public JButton getConnectButton() {
+            return connectButton;
         }
 
-        public void setExitButton(JButton exitButton) {
-            this.exitButton = exitButton;
+        public void setConnectButton(JButton connectButton) {
+            this.connectButton = connectButton;
         }
 
         public void setButtons(JButton[][] buttons) {
@@ -732,5 +1036,78 @@ public class Client {
         public void setSecondFromText(JLabel secondFromText) {
             this.secondFromText = secondFromText;
         }
+
+        public int getUndoTimes() {
+            return undoTimes;
+        }
+
+        public void setUndoTimes(int undoTimes) {
+            this.undoTimes = undoTimes;
+        }
+
+        public int getMoveNum() {
+            return moveNum;
+        }
+
+        public void setMoveNum(int moveNum) {
+            this.moveNum = moveNum;
+        }
+
+        public int getLastX() {
+            return lastX;
+        }
+
+        public void setLastX(int lastX) {
+            this.lastX = lastX;
+        }
+
+        public int getLastY() {
+            return lastY;
+        }
+
+        public void setLastY(int lastY) {
+            this.lastY = lastY;
+        }
+
+        public DefaultListModel getListModel() {
+            return listModel;
+        }
+
+        public void setListModel(DefaultListModel listModel) {
+            this.listModel = listModel;
+        }
+
+        public JList getPlayerList() {
+            return playerList;
+        }
+
+        public void setPlayerList(JList playerList) {
+            this.playerList = playerList;
+        }
+
+        public JScrollPane getListPane() {
+            return listPane;
+        }
+
+        public void setListPane(JScrollPane listPane) {
+            this.listPane = listPane;
+        }
+
+        public JButton getChanllengeButton() {
+            return chanllengeButton;
+        }
+
+        public void setChanllengeButton(JButton chanllengeButton) {
+            this.chanllengeButton = chanllengeButton;
+        }
+
+        public JButton getRandomPickButton() {
+            return randomPickButton;
+        }
+
+        public void setRandomPickButton(JButton randomPickButton) {
+            this.randomPickButton = randomPickButton;
+        }
+
     }
 }

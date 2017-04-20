@@ -31,13 +31,14 @@ public class ChangeBoardProcessor implements RemotingProcessor {
         LOG.debug("ChangeBoardProcessor正在处理请求....");
         ChangBoardRequestBody body = (ChangBoardRequestBody) request.getBody();
         int id = body.getId();
-        int x = body.getX();
         int y = body.getY();
+        int x = body.getX();
         boolean white = body.isWhite();
-        System.out.println("y="+y+" x="+x);
         //改变Server端自己的棋盘
         boolean success = application.getUserManager().changeUserBoard(id, white, y, x);
         UserInfo userInfo = application.getUserManager().getUserInfo(id);
+        userInfo.setLastY(y);
+        userInfo.setLastX(x);
         RemotingCommand response = null;
         if (success) {
             //改变Server端对手的棋盘

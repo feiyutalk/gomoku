@@ -2,11 +2,13 @@ package edu.hitsz.cluster.server;
 
 import edu.hitsz.commons.constants.Constants;
 
+import java.io.Serializable;
+
 
 /**
  * Created by Neuclil on 17-4-15.
  */
-public class Board {
+public class Board implements Serializable{
     private Color board[][];
     private int size;
 
@@ -25,6 +27,11 @@ public class Board {
             }
         }
     }
+
+    public void undo(int y, int x) {
+        board[y][x] = Color.NONE;
+    }
+
 
     public boolean setPosition(int y, int x, Color color) {
         if (board[y][x] == Color.NONE) {
@@ -80,6 +87,14 @@ public class Board {
         }
 
         return iw;
+    }
+
+    public void reset(){
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                board[i][j] = Color.NONE;
+            }
+        }
     }
 
     public void resetPosition(int x, int y) {

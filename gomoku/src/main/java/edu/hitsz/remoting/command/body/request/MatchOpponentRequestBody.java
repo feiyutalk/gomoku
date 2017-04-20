@@ -6,6 +6,7 @@ import edu.hitsz.remoting.command.body.AbstractRemotingCommandBody;
  * Created by Neuclil on 17-4-15.
  */
 public class MatchOpponentRequestBody extends AbstractRemotingCommandBody{
+    private int oppoId;
     private int image;
     private String name;
     private String gender;
@@ -17,7 +18,15 @@ public class MatchOpponentRequestBody extends AbstractRemotingCommandBody{
     public void checkFields() throws Exception {
 
     }
+
     /************************* 	Getter & Setter	*************************/
+    public int getOppoId() {
+        return oppoId;
+    }
+
+    public void setOppoId(int oppoId) {
+        this.oppoId = oppoId;
+    }
 
     public int getImage() {
         return image;

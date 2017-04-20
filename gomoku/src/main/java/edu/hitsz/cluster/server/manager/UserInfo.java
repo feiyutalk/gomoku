@@ -3,20 +3,24 @@ package edu.hitsz.cluster.server.manager;
 import edu.hitsz.cluster.server.Board;
 import edu.hitsz.remoting.Channel;
 
+import java.io.Serializable;
+
 /**
  * Created by Neuclil on 17-4-15.
  */
-public class UserInfo {
+public class UserInfo implements Serializable{
     private int id;
-    private Channel channel;
+    private transient Channel channel;
     private int image;
     private String name;
     private String gender;
     private int age;
     private String from;
     private boolean white;
-    private UserState userState;
-    private Board board;
+    private transient UserState userState;
+    private transient Board board;
+    private int lastY;
+    private int lastX;
 
     public boolean changeBoard(boolean white, int y, int x){
         return board.setPosition(y, x,
@@ -25,6 +29,14 @@ public class UserInfo {
 
     public boolean isWin(int y, int x){
         return board.isWin(y, x);
+    }
+
+    public void reset(){
+        board.reset();
+    }
+
+    public void undo(){
+        board.undo(lastY, lastX);
     }
 
     /************************* 	Getter & Setter	*************************/
@@ -108,14 +120,36 @@ public class UserInfo {
         this.board = board;
     }
 
+    public int getLastY() {
+        return lastY;
+    }
+
+    public void setLastY(int lastY) {
+        this.lastY = lastY;
+    }
+
+    public int getLastX() {
+        return lastX;
+    }
+
+    public void setLastX(int lastX) {
+        this.lastX = lastX;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +
-                "channel=" + channel +
+                "id=" + id +
+                ", channel=" + channel +
+                ", image=" + image +
                 ", name='" + name + '\'' +
-                ", id=" + id +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                ", from='" + from + '\'' +
+                ", white=" + white +
                 ", userState=" + userState +
-                ", board=\n" + board +
+                ", lastY=" + lastY +
+                ", lastX=" + lastX +
                 '}';
     }
 }

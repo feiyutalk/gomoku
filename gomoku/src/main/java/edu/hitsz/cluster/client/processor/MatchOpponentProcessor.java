@@ -1,6 +1,8 @@
 package edu.hitsz.cluster.client.processor;
 
+import edu.hitsz.cluster.client.Client;
 import edu.hitsz.cluster.client.ClientApplication;
+import edu.hitsz.cluster.client.state.GameState;
 import edu.hitsz.commons.support.GameBoot;
 import edu.hitsz.remoting.Channel;
 import edu.hitsz.remoting.command.RemotingCommand;
@@ -32,6 +34,7 @@ public class MatchOpponentProcessor implements RemotingProcessor{
             throws RemotingCommandException {
         LOG.debug("MatchOpponentProcessor正在处理请求....");
         MatchOpponentRequestBody body = (MatchOpponentRequestBody)request.getBody();
+        int oppoId = body.getOppoId();
         int imageSequnce = body.getImage();
         String name = body.getName();
         String gender = body.getGender();
@@ -48,19 +51,16 @@ public class MatchOpponentProcessor implements RemotingProcessor{
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Client.opponId = oppoId;
         application.getBoard().getSecondNameText().setText(name);
         application.getBoard().getSecondGenderText().setText(gender);
         application.getBoard().getSecondAgeText().setText(age+"");
         application.getBoard().getSecondFromText().setText(from);
         application.getBoard().setWhite(white);
         application.getBoard().getMessageTextField().setText("match opponent success!");
+        Client.gameState = GameState.READY;
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                GameBoot.start(application);
-            }
-        }).start();
         RemotingCommand response = RemotingCommand.createResponseCommand(
                 RemotingProtos.ResponseCode.MATCH_SUCCESS.code(),
                 new NullResponseBody());

@@ -1,6 +1,5 @@
 package edu.hitsz.cluster.server.processor;
 
-import edu.hitsz.cluster.client.ClientApplication;
 import edu.hitsz.cluster.server.ServerApplication;
 import edu.hitsz.remoting.Channel;
 import edu.hitsz.remoting.command.RemotingCommand;
@@ -23,6 +22,10 @@ public class ServerRemotingDispacher implements RemotingProcessor{
         this.application = application;
         processors.put(RemotingProtos.RequestCode.CONNECT, new ConnectProcessor(application));
         processors.put(RemotingProtos.RequestCode.CHANGE_BOARD, new ChangeBoardProcessor(application));
+        processors.put(RemotingProtos.RequestCode.RESTART, new RestartRequestProcessor(application));
+        processors.put(RemotingProtos.RequestCode.UNDO, new UndoRequestProcessor(application));
+        processors.put(RemotingProtos.RequestCode.CHALLENGE, new ChallengeRequestProcessor(application));
+        processors.put(RemotingProtos.RequestCode.START, new StartRequestProcessor(application));
     }
 
     @Override

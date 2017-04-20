@@ -9,6 +9,7 @@ public class ClientApplication {
     private ClientConfig clientConfig;
     private RemotingClientDelegate remotingClient;
     private Client.Board board;
+
     /************************* 	Getter & Setter	*************************/
 
     public ClientConfig getClientConfig() {

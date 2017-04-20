@@ -39,6 +39,16 @@ public class GameManager {
         return matchTab.get(id);
     }
 
+    public void removeMatch(int id){
+        Integer opponentId = getOpponentId(id);
+        matchTab.remove(id);
+        matchTab.remove(opponentId);
+    }
+
+    public UserInfo getOpponentInfo(int id){
+        return application.getUserManager().getUserInfo(matchTab.get(id));
+    }
+
     public synchronized static GameManager getInstance(ServerApplication application) {
         if (cm == null) {
             cm = new GameManager(application);

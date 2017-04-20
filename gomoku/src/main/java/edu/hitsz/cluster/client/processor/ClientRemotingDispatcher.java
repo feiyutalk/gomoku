@@ -24,6 +24,11 @@ public class ClientRemotingDispatcher implements RemotingProcessor{
         processors.put(RemotingProtos.RequestCode.OPPONENT_CHANGE_BOARD, new OpponentChangeBoardProcessor(application));
         processors.put(RemotingProtos.RequestCode.WIN, new WinRequestProcessor(application));
         processors.put(RemotingProtos.RequestCode.LOSE, new LoseRequestProcessor(application));
+        processors.put(RemotingProtos.RequestCode.OPPONENT_RESTART, new OpponentRestartProcessor(application));
+        processors.put(RemotingProtos.RequestCode.OPPONENT_UNDO, new OpponentUndoProcessor(application));
+        processors.put(RemotingProtos.RequestCode.OPPONENT_EXIT, new OpponentExitProcessor(application));
+        processors.put(RemotingProtos.RequestCode.PUSH_WAIT_USERINFO, new PushWaitUserInfoRequsetProcessor(application));
+        processors.put(RemotingProtos.RequestCode.OPPONENT_START, new OpponentStartProcessor(application));
     }
 
     @Override

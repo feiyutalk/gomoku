@@ -1,8 +1,8 @@
 package edu.hitsz.cluster.server.manager;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import edu.hitsz.remoting.Channel;
+
+import java.util.*;
 
 /**
  * Created by Neuclil on 17-4-15.
@@ -31,6 +31,10 @@ public class UserManager {
         return waitUsers;
     }
 
+    public synchronized List<UserInfo> getAll(){
+        return Collections.unmodifiableList(userList);
+    }
+
     public synchronized boolean changeUserBoard(int id,boolean white, int y, int x){
         UserInfo userInfo = getUserInfo(id);
         if(userInfo == null){
@@ -47,10 +51,41 @@ public class UserManager {
         return null;
     }
 
+    public synchronized UserInfo getRandomUserInfo(int id){
+        if(userList.size()<=1){
+            return null;
+        }
+        Random random = new Random();
+        int num = random.nextInt(userList.size());
+        while(num==id){
+            num = random.nextInt(userList.size());
+        }
+        return userList.get(num);
+    }
+
+    public synchronized void reset(int id){
+        for(UserInfo userInfo : userList){
+            if(userInfo.getId() == id){
+                userInfo.reset();
+            }
+        }
+    }
+
     public synchronized void addUser(UserInfo userInfo) {
         if(this.userList.size() < connections &&
                 !this.userList.contains(userInfo)) {
             this.userList.add(userInfo);
         }
+    }
+
+    public UserInfo remove(Channel channel) {
+        for(int i=0; i<userList.size(); i++){
+            UserInfo userInfo = userList.get(i);
+            if(userInfo.getChannel().equals(channel)){
+                userList.remove(i);
+                return userInfo;
+            }
+        }
+        return null;
     }
 }

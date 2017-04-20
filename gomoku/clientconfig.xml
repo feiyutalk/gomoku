@@ -4,9 +4,9 @@
     <gender>male</gender>
     <age>23</age>
     <from>Japan</from>
-    <image>2</image>
+    <image>1</image>
     <ip>localhost</ip>
     <port>8000</port>
-    <serverIp>120.76.28.16</serverIp>
-    <serverPort>8080</serverPort>
+    <serverIp>localhost</serverIp>
+    <serverPort>8888</serverPort>
 </client>

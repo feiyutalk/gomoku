@@ -138,6 +138,9 @@ public class NettyRemotingServer extends AbstractRemotingServer {
             String remoteAddress = RemotingHelper.parseChannelRemoteAddr(channel);
             LOGGER.info("客户端断开链接: " + remoteAddress);
             super.channelInactive(ctx);
+            if(channelEventListener != null){
+                putRemotingEvent(new RemotingEvent(RemotingEventType.CLOSE, remoteAddress, channel));
+            }
         }
 
         @Override

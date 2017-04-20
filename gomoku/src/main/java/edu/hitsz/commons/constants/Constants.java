@@ -33,9 +33,8 @@ public interface Constants {
 	int BUTTONS_WIDTH_OFF = FIRST_PANEL_WIDTH;
 	int BUTTONS_HEIGHT_OFF = 50;
 
-	int X_OFF = 0;
-	int Y_OFF = 50;
-	
+	//play List
+
 	/********************   			 系统相关  				  ********************/
 	int AVAILABLE_PROCESSOR = Runtime.getRuntime().availableProcessors();
 

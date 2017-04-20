@@ -14809,3 +14809,235 @@ channel取消注册成功:127.0.0.1:57784
 channel取消注册成功:127.0.0.1:57782
 [ DEBUG ] - [ edu.hitsz.cluster.server.Server$1.run(Server.java:84) ] - 2017-04-16 11:18:51  
 空闲用户数不够0
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.init(Client.java:78) ] - 2017-04-16 11:44:35  
+Client开始初始化....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initConfig(Client.java:127) ] - 2017-04-16 11:44:35  
+Client初始化配置信息成功! ClientConfig{name='Wanqian', ip='localhost', port=8000, serverIp='120.76.28.16', serverPort=8080}
+[ DEBUG ] - [ io.netty.util.internal.logging.InternalLoggerFactory.<clinit>(InternalLoggerFactory.java:45) ] - 2017-04-16 11:44:35  
+Using Log4J as the default logging framework
+[ DEBUG ] - [ io.netty.channel.MultithreadEventLoopGroup.<clinit>(MultithreadEventLoopGroup.java:41) ] - 2017-04-16 11:44:35  
+-Dio.netty.eventLoopThreads: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.isRoot0(PlatformDependent.java:370) ] - 2017-04-16 11:44:35  
+UID: 1000
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.javaVersion0(PlatformDependent.java:447) ] - 2017-04-16 11:44:35  
+Java version: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:454) ] - 2017-04-16 11:44:35  
+-Dio.netty.noUnsafe: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:61) ] - 2017-04-16 11:44:35  
+java.nio.ByteBuffer.cleaner: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:80) ] - 2017-04-16 11:44:35  
+java.nio.Buffer.address: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:88) ] - 2017-04-16 11:44:35  
+sun.misc.Unsafe.theUnsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:98) ] - 2017-04-16 11:44:35  
+sun.misc.Unsafe.copyMemory: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:138) ] - 2017-04-16 11:44:35  
+java.nio.Bits.unaligned: true
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:481) ] - 2017-04-16 11:44:35  
+sun.misc.Unsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:559) ] - 2017-04-16 11:44:35  
+-Dio.netty.noJavassist: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:571) ] - 2017-04-16 11:44:35  
+Javassist: unavailable
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:572) ] - 2017-04-16 11:44:35  
+You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:76) ] - 2017-04-16 11:44:35  
+-Dio.netty.noPreferDirect: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:88) ] - 2017-04-16 11:44:35  
+-Dio.netty.noKeySetOptimization: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:89) ] - 2017-04-16 11:44:35  
+-Dio.netty.selectorAutoRebuildThreshold: 512
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initRemoting(Client.java:114) ] - 2017-04-16 11:44:35  
+初始化通信服务完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initBoard(Client.java:109) ] - 2017-04-16 11:44:35  
+棋盘初始化成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initApplication(Client.java:96) ] - 2017-04-16 11:44:35  
+初始化application完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:57) ] - 2017-04-16 11:44:35  
+正在开启通信服务....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:64) ] - 2017-04-16 11:44:35  
+通信服务开启成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$1.actionPerformed(Client.java:240) ] - 2017-04-16 11:44:41  
+开始游戏,正在寻找对手....
+[ DEBUG ] - [ io.netty.util.internal.ThreadLocalRandom.newSeed(ThreadLocalRandom.java:138) ] - 2017-04-16 11:44:41  
+-Dio.netty.initialSeedUniquifier: 0x770dac457a8dc249
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 11:44:41  
+开始尝试建立通信连接:120.76.28.16:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 11:44:41  
+建立远程连接成功:120.76.28.16:8080,edu.hitsz.remoting.netty.NettyChannelFuture@3d0975c3
+[ DEBUG ] - [ io.netty.util.ResourceLeakDetector.<clinit>(ResourceLeakDetector.java:38) ] - 2017-04-16 11:44:41  
+-Dio.netty.noResourceLeakDetection: false
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:44:41  
+收到响应指令:CONNECT_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$1.actionPerformed(Client.java:255) ] - 2017-04-16 11:44:41  
+连接成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:44:44  
+收到请求指令:MATCH
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.MatchOpponentProcessor.processRequest(MatchOpponentProcessor.java:29) ] - 2017-04-16 11:44:44  
+MatchOpponentProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.MatchOpponentProcessor.processRequest(MatchOpponentProcessor.java:43) ] - 2017-04-16 11:44:44  
+MatchOpponentProcessor处理请求完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.init(Client.java:78) ] - 2017-04-16 11:45:22  
+Client开始初始化....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initConfig(Client.java:127) ] - 2017-04-16 11:45:22  
+Client初始化配置信息成功! ClientConfig{name='Conghuai', ip='localhost', port=8000, serverIp='120.76.28.16', serverPort=8080}
+[ DEBUG ] - [ io.netty.util.internal.logging.InternalLoggerFactory.<clinit>(InternalLoggerFactory.java:45) ] - 2017-04-16 11:45:22  
+Using Log4J as the default logging framework
+[ DEBUG ] - [ io.netty.channel.MultithreadEventLoopGroup.<clinit>(MultithreadEventLoopGroup.java:41) ] - 2017-04-16 11:45:22  
+-Dio.netty.eventLoopThreads: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.isRoot0(PlatformDependent.java:370) ] - 2017-04-16 11:45:22  
+UID: 1000
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.javaVersion0(PlatformDependent.java:447) ] - 2017-04-16 11:45:22  
+Java version: 8
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:454) ] - 2017-04-16 11:45:22  
+-Dio.netty.noUnsafe: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:61) ] - 2017-04-16 11:45:22  
+java.nio.ByteBuffer.cleaner: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:80) ] - 2017-04-16 11:45:22  
+java.nio.Buffer.address: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:88) ] - 2017-04-16 11:45:22  
+sun.misc.Unsafe.theUnsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:98) ] - 2017-04-16 11:45:22  
+sun.misc.Unsafe.copyMemory: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:138) ] - 2017-04-16 11:45:22  
+java.nio.Bits.unaligned: true
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasUnsafe0(PlatformDependent.java:481) ] - 2017-04-16 11:45:22  
+sun.misc.Unsafe: available
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:559) ] - 2017-04-16 11:45:22  
+-Dio.netty.noJavassist: false
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:571) ] - 2017-04-16 11:45:22  
+Javassist: unavailable
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.hasJavassist0(PlatformDependent.java:572) ] - 2017-04-16 11:45:22  
+You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+[ DEBUG ] - [ io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:76) ] - 2017-04-16 11:45:22  
+-Dio.netty.noPreferDirect: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:88) ] - 2017-04-16 11:45:22  
+-Dio.netty.noKeySetOptimization: false
+[ DEBUG ] - [ io.netty.channel.nio.NioEventLoop.<clinit>(NioEventLoop.java:89) ] - 2017-04-16 11:45:22  
+-Dio.netty.selectorAutoRebuildThreshold: 512
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initRemoting(Client.java:114) ] - 2017-04-16 11:45:22  
+初始化通信服务完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initBoard(Client.java:109) ] - 2017-04-16 11:45:23  
+棋盘初始化成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.initApplication(Client.java:96) ] - 2017-04-16 11:45:23  
+初始化application完成!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:57) ] - 2017-04-16 11:45:23  
+正在开启通信服务....
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client.startRemoting(Client.java:64) ] - 2017-04-16 11:45:23  
+通信服务开启成功!
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$1.actionPerformed(Client.java:240) ] - 2017-04-16 11:45:24  
+开始游戏,正在寻找对手....
+[ DEBUG ] - [ io.netty.util.internal.ThreadLocalRandom.newSeed(ThreadLocalRandom.java:138) ] - 2017-04-16 11:45:24  
+-Dio.netty.initialSeedUniquifier: 0xa54bedf97a4bc481
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:185) ] - 2017-04-16 11:45:24  
+开始尝试建立通信连接:120.76.28.16:8080
+[ INFO ] - [ edu.hitsz.remoting.AbstractRemotingClient.createChannel(AbstractRemotingClient.java:204) ] - 2017-04-16 11:45:24  
+建立远程连接成功:120.76.28.16:8080,edu.hitsz.remoting.netty.NettyChannelFuture@1877f239
+[ DEBUG ] - [ io.netty.util.ResourceLeakDetector.<clinit>(ResourceLeakDetector.java:38) ] - 2017-04-16 11:45:24  
+-Dio.netty.noResourceLeakDetection: false
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:45:24  
+收到响应指令:CONNECT_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$1.actionPerformed(Client.java:255) ] - 2017-04-16 11:45:24  
+连接成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:45:39  
+收到请求指令:MATCH
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.MatchOpponentProcessor.processRequest(MatchOpponentProcessor.java:29) ] - 2017-04-16 11:45:39  
+MatchOpponentProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.MatchOpponentProcessor.processRequest(MatchOpponentProcessor.java:43) ] - 2017-04-16 11:45:39  
+MatchOpponentProcessor处理请求完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:45:43  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:45:43  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:45:45  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-16 11:45:45  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-16 11:45:45  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:45:46  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:45:46  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:45:49  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-16 11:45:49  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-16 11:45:49  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:45:50  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:45:50  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:45:51  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-16 11:45:51  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-16 11:45:51  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:45:52  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:45:52  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:45:54  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-16 11:45:54  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-16 11:45:54  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:45:55  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:45:55  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:45:59  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-16 11:45:59  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-16 11:45:59  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:46:00  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:46:00  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:46:02  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-16 11:46:02  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-16 11:46:02  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:46:04  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:46:04  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:46:09  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-16 11:46:09  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-16 11:46:09  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:46:11  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:46:11  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:46:15  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-16 11:46:15  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-16 11:46:15  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:46:16  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:46:16  
+Server端棋局状态改变成功!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:46:22  
+收到请求指令:OPPONENT_CHANGE_BOARD
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:27) ] - 2017-04-16 11:46:22  
+OpponentChangeBoardProcessor正在处理请求....
+[ DEBUG ] - [ edu.hitsz.cluster.client.processor.OpponentChangeBoardProcessor.processRequest(OpponentChangeBoardProcessor.java:35) ] - 2017-04-16 11:46:22  
+OpponentChangeBoardProcessor处理完成!
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:95) ] - 2017-04-16 11:46:24  
+收到请求指令:WIN
+[ DEBUG ] - [ edu.hitsz.remoting.netty.NettyRemotingClient$NettyClientHandler.channelRead0(NettyRemotingClient.java:97) ] - 2017-04-16 11:46:24  
+收到响应指令:CHANGE_BOARD_SUCCESS
+[ DEBUG ] - [ edu.hitsz.cluster.client.Client$Board$2.actionPerformed(Client.java:299) ] - 2017-04-16 11:46:24  
+Server端棋局状态改变成功!

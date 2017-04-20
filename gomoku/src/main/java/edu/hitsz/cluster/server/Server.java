@@ -142,7 +142,7 @@ public class Server {
 
     private void initConfig() {
         Map<String, String> info =
-                Parser.parserServerConfig("serverconfig.xml");
+                Parser.parserServerConfig("/home/frobot/serverconfig.xml");
         config = new ServerConfig.Builder()
                                  .ip(info.get("ip"))
                                  .port(Integer.valueOf(info.get("port")))

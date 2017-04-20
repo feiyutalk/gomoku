@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <client>
-    <name>Wanqian</name>
+    <name>Conghuai</name>
     <ip>localhost</ip>
     <port>8000</port>
-    <serverIp>localhost</serverIp>
+    <serverIp>120.76.28.16</serverIp>
     <serverPort>8080</serverPort>
 </client>

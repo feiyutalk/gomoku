@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <client>
-    <name>Issei</name>
+    <name>Conghuai</name>
     <gender>male</gender>
-    <age>21</age>
-    <from>USA</from>
+    <age>23</age>
+    <from>Fujian</from>
     <image>2</image>
     <ip>localhost</ip>
     <port>8000</port>

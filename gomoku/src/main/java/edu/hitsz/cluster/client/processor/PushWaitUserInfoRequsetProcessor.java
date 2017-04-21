@@ -36,6 +36,7 @@ public class PushWaitUserInfoRequsetProcessor implements RemotingProcessor{
             String info = id + "-" + name;
             application.getBoard().addPlayer(info);
         }
+        application.getBoard().getWaitPlayerText().setText(waitUsers.size()+"");
         application.getBoard().getPlayerList().repaint();
         return RemotingCommand.createResponseCommand(
                 RemotingProtos.ResponseCode.NULL.code(),

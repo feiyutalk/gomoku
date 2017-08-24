@@ -1,5 +1,4 @@
 # GoMoKu
-A Project of Distributed Systems
 
 GoMoKu (Connect-5) is a chess game. The game board is a 1010 grid area, as shown below. The rules are:
 
